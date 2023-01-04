@@ -1,6 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import { MantineProvider, MantineThemeOverride } from "@mantine/core";
 
 export const narioxTheme: MantineThemeOverride = {
@@ -176,7 +177,10 @@ export const narioxTheme: MantineThemeOverride = {
   fontFamily: "IBM Plex Sans, sans-serif",
 };
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(
   <React.StrictMode>
     <MantineProvider
       withNormalizeCSS
@@ -186,6 +190,7 @@ ReactDOM.render(
     >
       <App />
     </MantineProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
+
+reportWebVitals();
