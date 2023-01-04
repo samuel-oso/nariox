@@ -1,13 +1,191 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
+import ReactDOM from "react-dom";
 import App from "./App";
+import { MantineProvider, MantineThemeOverride } from "@mantine/core";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
-root.render(
+export const narioxTheme: MantineThemeOverride = {
+  colorScheme: "light",
+  colors: {
+    primary: [
+      "#dde1fe",
+      "#bac3fc",
+      "#98a5fb",
+      "#7587f9",
+      "#5369f8",
+      "#4254c6",
+      "#323f95",
+      "#212a63",
+      "#111532",
+    ],
+    secondary: [
+      "#e2e3e5",
+      "#c4c8cb",
+      "#a7acb1",
+      "#899197",
+      "#6c757d",
+      "#565e64",
+      "#41464b",
+      "#2b2f32",
+      "#161719",
+    ],
+    success: [
+      "#d9f6ec",
+      "#b4edd8",
+      "#8ee5c5",
+      "#69dcb1",
+      "#43d39e",
+      "#36a97e",
+      "#287f5f",
+      "#1b543f",
+      "#0d2a20",
+    ],
+    info: [
+      "#d3f3f9",
+      "#a8e7f4",
+      "#7cdaee",
+      "#51cee9",
+      "#25c2e3",
+      "#1e9bb6",
+      "#167488",
+      "#0f4e5b",
+      "#07272d",
+    ],
+    warning: [
+      "#fff2ce",
+      "#ffe59d",
+      "#ffd86d",
+      "#ffcb3c",
+      "#ffbe0b",
+      "#cc9809",
+      "#997207",
+      "#664c04",
+      "#332602",
+    ],
+    error: [
+      "#ffdee3",
+      "#ffbec8",
+      "#ff9dac",
+      "#ff7d91",
+      "#ff5c75",
+      "#cc4a5e",
+      "#993746",
+      "#66252f",
+      "#331217",
+    ],
+    grey100: [
+      "#fefefe",
+      "#fcfdfd",
+      "#fbfbfc",
+      "#f9fafb",
+      "#f8f9fa",
+      "#c6c7c8",
+      "#959596",
+      "#636464",
+      "#323232",
+    ],
+    grey200: [
+      "#fdfdfd",
+      "#fbfbfc",
+      "#fafafa",
+      "#f8f8f9",
+      "#f6f6f7",
+      "#c5c5c6",
+      "#949494",
+      "#626263",
+      "#313131",
+    ],
+    grey300: [
+      "#f9fafc",
+      "#f3f5f9",
+      "#eef1f7",
+      "#e8ecf4",
+      "#e2e7f1",
+      "#b5b9c1",
+      "#888b91",
+      "#5a5c60",
+      "#2d2e30",
+    ],
+    grey400: [
+      "#f5f6f8",
+      "#ebeef0",
+      "#e2e5e9",
+      "#d8dde1",
+      "#ced4da",
+      "#a5aaae",
+      "#7c7f83",
+      "#525557",
+      "#292a2c",
+    ],
+    grey500: [
+      "#eff0f2",
+      "#dee1e5",
+      "#ced3d7",
+      "#bdc4ca",
+      "#adb5bd",
+      "#8a9197",
+      "#686d71",
+      "#45484c",
+      "#232426",
+    ],
+    grey600: [
+      "#e2e3e5",
+      "#c4c8cb",
+      "#a7acb1",
+      "#899197",
+      "#6c757d",
+      "#565e64",
+      "#41464b",
+      "#2b2f32",
+      "#161719",
+    ],
+    grey700: [
+      "#dbdbde",
+      "#b7b7bd",
+      "#93939c",
+      "#6f6f7b",
+      "#4b4b5a",
+      "#3c3c48",
+      "#2d2d36",
+      "#1e1e24",
+      "#0f0f12",
+    ],
+    grey800: [
+      "#d6d8d9",
+      "#aeb0b3",
+      "#85898c",
+      "#5d6166",
+      "#343a40",
+      "#2a2e33",
+      "#1f2326",
+      "#15171a",
+      "#0a0c0d",
+    ],
+    grey900: [
+      "#d3d3d4",
+      "#a6a8a9",
+      "#7a7c7f",
+      "#4d5154",
+      "#212529",
+      "#1a1e21",
+      "#141619",
+      "#0d0f10",
+      "#070708",
+    ],
+  },
+  primaryColor: "primary",
+  fontFamily: "IBM Plex Sans, sans-serif",
+};
+
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <MantineProvider
+      withNormalizeCSS
+      withGlobalStyles
+      withCSSVariables
+      theme={narioxTheme}
+    >
+      <App />
+    </MantineProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
