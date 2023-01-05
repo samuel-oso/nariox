@@ -15,6 +15,7 @@ function Theme() {
 
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+  const dark = colorScheme === "dark";
 
   useHotkeys([["mod+J", () => toggleColorScheme()]]);
 
@@ -102,7 +103,7 @@ function Theme() {
               "#c6c7c8",
               "#959596",
               "#636464",
-              "#323232",
+              "#323742",
             ],
             grey200: [
               "#fdfdfd",
@@ -133,7 +134,7 @@ function Theme() {
               "#d8dde1",
               "#ced4da",
               "#a5aaae",
-              "#7c7f83",
+              "#adb5bd",
               "#525557",
               "#292a2c",
             ],
@@ -204,8 +205,31 @@ function Theme() {
               "#0c0d21",
               "#01010a",
             ],
+            white: [
+              "#ffffff12",
+              "#40454f",
+              "#ffffff",
+              "#ffffff",
+              "#ffffff",
+              "#cccccc",
+              "#7a7d84",
+              "#666666",
+              "#333333",
+            ],
           },
           fontFamily: "IBM Plex Sans, sans-serif",
+          components: {
+            Input: {
+              styles: (theme) => ({
+                input: {
+                  backgroundColor: dark
+                    ? theme.colors.white[1]
+                    : theme.colors.grey200[4],
+                  color: dark ? theme.colors.white[6] : theme.colors.grey400[6],
+                },
+              }),
+            },
+          },
         }}
         withGlobalStyles
         withNormalizeCSS

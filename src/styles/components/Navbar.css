@@ -1,0 +1,148 @@
+.navWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px 10px 0;
+  height: 70px;
+  position: fixed;
+  width: 100%;
+}
+
+.navList_start,
+.navList_end {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  position: relative;
+}
+
+.navList_logos {
+  height: 70px;
+  display: flex;
+  width: 65px;
+  justify-content: center;
+  align-items: center;
+}
+
+.navList_searchSm {
+  display: none;
+}
+
+.logo_sm {
+  width: 17px;
+  height: 25px;
+}
+
+.navList_new,
+.navList_searchWeb,
+.navList_icons,
+.navList_profileName,
+.logo_lg {
+  display: none;
+}
+
+.navList_notification {
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 7px;
+}
+
+.navList_notification p {
+  border-radius: 50%;
+  width: 14px;
+  font-size: 10px;
+  text-align: center;
+  position: relative;
+  bottom: 10px;
+  right: 8px;
+  background-color: var(--mantine-color-error-4);
+  color: var(--mantine-color-white-4);
+}
+
+@media (min-width: 375px) {
+  .navList_searchSm {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .navList_profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .navList_profileName {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .navList_profileName p {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    font-size: 14px;
+  }
+
+  .navList_profileName svg {
+    width: 14px;
+    height: 14px;
+    margin-top: 4px;
+  }
+}
+
+@media (min-width: 992px) {
+  .navList_icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .navList_search {
+    margin-top: 0px;
+  }
+
+  .navList_searchSm {
+    display: none;
+  }
+
+  .navList_searchWeb {
+    display: block;
+    border-radius: 4px;
+  }
+
+  .navList_searchWeb input {
+    border: 1px solid transparent;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navList_new {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 12px 0 12px;
+  }
+
+  .navList_new svg {
+    margin-top: 3px;
+  }
+
+  .logo_sm {
+    display: none;
+  }
+
+  .logo_lg {
+    display: block;
+    width: 108.5px;
+    height: 24px;
+  }
+
+  .navList_logos {
+    width: 250px;
+    justify-content: flex-start;
+    padding: 24px;
+  }
+}
