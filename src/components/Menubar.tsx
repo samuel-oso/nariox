@@ -38,7 +38,7 @@ export default function Sidebar() {
         <span>02</span>
       </div>
 
-      <Collapse in={opened}>
+      <Collapse className="test" in={opened}>
         <div className="menuItem_sub">
           <Link
             to="/dashboard/analytics"
@@ -68,15 +68,18 @@ export default function Sidebar() {
       </Collapse>
 
       <div className="menubar__main">
-        <Box
-          sx={{
-            backgroundColor: dark
-              ? theme.colors.grey100[8]
-              : theme.colors.grey100[7],
-          }}
-          className="menubar_mainDivider"
-        />
-        <div className="menubar_mainTitle">APPS</div>
+        <div className="menubar_mainCategory">
+          <Box
+            sx={{
+              backgroundColor: dark
+                ? theme.colors.grey100[8]
+                : theme.colors.grey100[7],
+            }}
+            className="menubar_mainDivider"
+          />
+          <div className="menubar_mainTitle">APPS</div>
+        </div>
+
         {MenuItems.map((item: any, index: Key | null | undefined) => (
           <MenubarItem key={index} item={item} />
         ))}
