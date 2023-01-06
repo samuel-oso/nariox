@@ -1,0 +1,37 @@
+.Appshell {
+  background-color: greenyellow;
+  width: 100%;
+}
+
+.mantine-bslmsw {
+  height: 100vh;
+  padding: 0 !important;
+  flex: 1 auto;
+  height: 100%;
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+  top: 70px;
+}
+
+.container {
+  width: 100%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+@media (min-width: 1024px) {
+  .mantine-bslmsw {
+    margin-left: 75px;
+    width: calc(100% - 75px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .mantine-bslmsw {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+  }
+}

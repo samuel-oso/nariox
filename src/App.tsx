@@ -1,11 +1,14 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Analytics from "./pages/dashboard/Analytics";
 
 function App() {
   return (
-    <div>
-      <Navbar />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/dashboard/analytics" element={<Analytics />} />
+      </Routes>
+    </Router>
   );
 }
 

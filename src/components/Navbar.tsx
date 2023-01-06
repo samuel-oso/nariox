@@ -1,7 +1,7 @@
-import logo from "../images/logo.png";
-import logoWeb from "../images/logoWeb.png";
-import logoWeb_Dark from "../images/logoWeb_Dark.png";
-import user from "../images/user.png";
+import logo from "../assets/images/logo.png";
+import logoWeb from "../assets/images/logoWeb.png";
+import logoWeb_Dark from "../assets/images/logoWeb_Dark.png";
+import user from "../assets/images/user.png";
 import "../styles/components/Navbar.css";
 import {
   Avatar,
@@ -29,7 +29,7 @@ function Navbar() {
   return (
     <Box
       sx={{
-        backgroundColor: dark ? theme.colors.grey100[8] : theme.colors.white[4],
+        backgroundColor: dark ? theme.colors.grey900[8] : theme.colors.white[4],
         color: dark ? theme.colors.white[4] : theme.colors.grey800[4],
         borderBottom: dark
           ? "none"
@@ -43,6 +43,9 @@ function Navbar() {
             borderRight: dark
               ? "none"
               : "1px solid var(--mantine-color-grey300-4)",
+            backgroundColor: dark
+              ? theme.colors.grey900[1]
+              : theme.colors.white[4],
           }}
           className="navList_logos"
         >
