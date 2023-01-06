@@ -1,4 +1,9 @@
-import { ReactComponent as Dashboard } from "../images/Dashboard.svg";
+import { ReactComponent as IconCalendar } from "../images/IconCalendar.svg";
+import { ReactComponent as IconMessage } from "../images/IconMessage.svg";
+import { ReactComponent as IconMail } from "../images/IconMail.svg";
+import { ReactComponent as IconBriefcase } from "../images/IconBriefcase.svg";
+import { ReactComponent as IconClipboard } from "../images/IconClipboard.svg";
+import { ReactComponent as IconFilePlus } from "../images/IconFilePlus.svg";
 
 export interface MenuItemTypes {
   key: string;
@@ -10,55 +15,78 @@ export interface MenuItemTypes {
 
 const MenuItems: MenuItemTypes[] = [
   {
-    key: "dashboard",
-    label: "Dashboard",
-    icon: <Dashboard />,
+    key: "calendar",
+    label: "Calendar",
+    icon: <IconCalendar />,
     url: "/dashboard/analytics",
   },
   {
-    key: "user-accounts",
-    label: "User Accounts",
-    icon: <Dashboard />,
+    key: "chat",
+    label: "Chat",
+    icon: <IconMessage />,
+    url: "/dashboard/analytics",
+  },
+  {
+    key: "email",
+    label: "Email",
+    icon: <IconMail />,
     children: [
       {
-        key: "user-kyc",
-        label: "KYC Submissions",
+        key: "inbox",
+        label: "Inbox",
         url: "/dashboard/analytics",
       },
       {
-        key: "user-customers",
-        label: "Customers",
+        key: "read email",
+        label: "Read Email",
+        url: "/dashboard/analytics",
+      },
+      {
+        key: "compose email",
+        label: "Compose Email",
         url: "/dashboard/analytics",
       },
     ],
   },
   {
-    key: "transactions",
-    label: "Transactions",
-    icon: <Dashboard />,
+    key: "projects",
+    label: "Projects",
+    icon: <IconBriefcase />,
     children: [
       {
-        key: "transaction-declined",
-        label: "Declined",
+        key: "project list",
+        label: "List",
         url: "/dashboard/analytics",
       },
       {
-        key: "transaction-flagged",
-        label: "Flagged",
+        key: "project details",
+        label: "Details",
         url: "/dashboard/analytics",
       },
     ],
   },
   {
-    key: "menu",
-    label: "Menu",
-    icon: <Dashboard />,
-    url: "/dashboard/analytics",
+    key: "tasks",
+    label: "Tasks",
+    icon: <IconClipboard />,
+    children: [
+      {
+        key: "tasks list",
+        label: "List",
+        url: "/dashboard/analytics",
+      },
+      {
+        key: "tasks details",
+        label: "Kanban Board",
+        url: "/dashboard/analytics",
+      },
+    ],
   },
   {
-    key: "logout",
-    label: "Log out",
-    icon: <Dashboard />,
+    key: "file manager",
+    label: "File Manager",
+    icon: <IconFilePlus />,
+    url: "/dashboard/analytics",
   },
 ];
 

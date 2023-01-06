@@ -2,6 +2,20 @@
   display: none;
 }
 
+.menubar_wrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.menubar_wrapper::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.menubar_wrapper::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px #6d7781;
+}
+
 @media (min-width: 1024px) {
   .menubar_wrapper {
     display: block;
@@ -11,6 +25,8 @@
     transition: all 0.1s ease-out;
     top: 68px;
     font-size: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .menubar_top {
@@ -18,6 +34,7 @@
     align-items: center;
     padding: 12px 25px;
     justify-content: center;
+    cursor: pointer;
   }
 
   .menubar_topLabel {
@@ -27,7 +44,9 @@
     gap: 10px;
   }
 
-  .menubar_topLabel svg {
+  .menubar_topLabel svg,
+  .menuItem_label svg,
+  .menuItem_labelLink svg {
     width: 22px;
     height: 22px;
   }
@@ -35,6 +54,76 @@
   .menubar_topLabel p,
   .menubar_top span {
     display: none;
+  }
+
+  .menubar__main {
+    position: relative;
+  }
+
+  .menubar_mainDivider {
+    height: 1px;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 15px;
+    right: 15px;
+  }
+
+  .menubar_mainTitle {
+    padding: 25px 25px 0;
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    cursor: default;
+    text-transform: uppercase;
+    margin-top: 12px;
+    font-size: 11px;
+  }
+
+  .menuItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 25px;
+    cursor: pointer;
+  }
+
+  .menuItem_label,
+  .menuItem_labelLink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .menuItem_labelLink {
+    padding: 12px 25px;
+    text-decoration: none;
+  }
+
+  .menuItem_label p,
+  .menuItem_labelLink p {
+    margin: 0 !important;
+  }
+
+  .menuCollapse {
+    transition: ease-in 0.2s;
+  }
+
+  .menuCollapse.open {
+    transform: rotate(180deg);
+    transition: ease-out 0.2s;
+  }
+
+  .menuItem_sub {
+    padding-left: 34px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menuItem_subLabel {
+    cursor: pointer;
+    padding: 8px 25px;
+    text-decoration: none;
+    font-size: 14px;
   }
 }
 
@@ -55,7 +144,9 @@
     display: block;
   }
 
-  .menubar_topLabel svg {
+  .menubar_topLabel svg,
+  .menuItem_label svg,
+  .menuItem_labelLink sv {
     width: 23px;
     height: 23px;
   }
