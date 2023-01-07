@@ -19,7 +19,8 @@
 .menubar_mainCategory,
 .menuItem_label p,
 .menuCollapse,
-.menuItem_labelLink p {
+.menuItem_labelLink p,
+.menuItem_sub {
   display: none;
 }
 
@@ -106,12 +107,6 @@
     text-decoration: none;
   }
 
-  .menuItem_sub {
-    padding-left: 34px;
-    display: flex;
-    flex-direction: column;
-  }
-
   .menuItem_subLabel {
     cursor: pointer;
     padding: 8px 25px;
@@ -163,7 +158,8 @@
   .menubar_mainCategory,
   .menuItem_label p,
   .menuCollapse,
-  .menuItem_labelLink p {
+  .menuItem_labelLink p,
+  .menuItem_sub {
     display: block;
   }
 
@@ -179,5 +175,11 @@
   .menuCollapse.open {
     transform: rotate(180deg);
     transition: ease-out 0.2s;
+  }
+
+  .menuItem_sub {
+    padding-left: 34px;
+    display: flex;
+    flex-direction: column;
   }
 }
