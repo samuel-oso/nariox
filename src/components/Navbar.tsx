@@ -69,11 +69,6 @@ function Navbar() {
             onClick={() => setDrawerOpened(true)}
             className="navList_menu"
           />
-
-          <div className="navList_new">
-            <p>Create New</p>
-            <IconChevronDown size={16} />
-          </div>
         </div>
         <div className="navList_end">
           <div className="navList_search">

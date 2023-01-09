@@ -34,7 +34,6 @@
   height: 25px;
 }
 
-.navList_new,
 .navList_searchWeb,
 .navList_icons,
 .navList_profileName,
@@ -125,6 +124,7 @@
 
   .navList_searchWeb input {
     border: 1px solid transparent;
+    width: 180px;
   }
 
   .navList_menu {
@@ -139,17 +139,6 @@
     display: block;
     width: 108.5px;
     height: 24px;
-  }
-
-  .navList_new {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding: 0 12px 0 12px;
-  }
-
-  .navList_new svg {
-    margin-top: 3px;
   }
 
   .logo_sm {
