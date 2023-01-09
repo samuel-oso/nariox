@@ -61,6 +61,10 @@
   color: var(--mantine-color-white-4);
 }
 
+.navList_menu {
+  display: block;
+}
+
 @media (min-width: 375px) {
   .navList_searchSm {
     display: block;
@@ -115,6 +119,10 @@
 
   .navList_searchWeb input {
     border: 1px solid transparent;
+  }
+
+  .navList_menu {
+    display: none;
   }
 }
 

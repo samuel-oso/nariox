@@ -57,7 +57,7 @@ function Navbar() {
           />
         </Box>
 
-        <IconMenu2 />
+        <IconMenu2 className="navList_menu" />
 
         <div className="navList_new">
           <p>Create New</p>
