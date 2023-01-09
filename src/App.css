@@ -24,13 +24,6 @@
 
 @media (min-width: 1024px) {
   .mantine-bslmsw {
-    margin-left: 75px;
-    width: calc(100% - 75px);
-  }
-}
-
-@media (min-width: 1280px) {
-  .mantine-bslmsw {
     margin-left: 250px;
     width: calc(100% - 250px);
   }

@@ -16,18 +16,9 @@
   -webkit-box-shadow: inset 0 0 6px #6d7781;
 }
 
-.menubar_mainCategory,
-.menuItem_label p,
-.menuCollapse,
-.menuItem_labelLink p,
-.menuItem_sub {
-  display: none;
-}
-
 @media (min-width: 1024px) {
   .menubar_wrapper {
     display: block;
-    width: 75px;
     bottom: 0;
     position: fixed;
     transition: all 0.1s ease-out;
@@ -35,13 +26,17 @@
     font-size: 15px;
     overflow-y: auto;
     overflow-x: hidden;
+    justify-content: flex-start;
+    width: 250px;
+    padding: 20px 0;
+    left: 0;
   }
 
   .menubar_top {
     display: flex;
     align-items: center;
     padding: 12px 25px;
-    justify-content: center;
+    justify-content: space-between;
     cursor: pointer;
   }
 
@@ -55,17 +50,16 @@
   .menubar_topLabel svg,
   .menuItem_label svg,
   .menuItem_labelLink svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .menubar_topLabel p,
-  .menubar_top span {
-    display: none;
+    width: 23px;
+    height: 23px;
   }
 
   .menubar__main {
     position: relative;
+  }
+
+  .menubar_topLabel p {
+    margin: 0 !important;
   }
 
   .menubar_mainDivider {
@@ -95,6 +89,18 @@
     cursor: pointer;
   }
 
+  .menubar_top span {
+    background-color: var(--mantine-color-success-4);
+    color: var(--mantine-color-white-4);
+    border-radius: 4px;
+    vertical-align: middle;
+    padding: 2px 4px;
+    font-size: 11.4px;
+    font-weight: 700;
+    line-height: 1;
+    float: right !important;
+  }
+
   .menuItem_label,
   .menuItem_labelLink {
     display: flex;
@@ -113,54 +119,9 @@
     text-decoration: none;
     font-size: 14px;
   }
-}
-
-@media (min-width: 1280px) {
-  .menubar_wrapper {
-    justify-content: flex-start;
-    width: 250px;
-    padding: 20px 0;
-    left: 0;
-  }
-
-  .menubar_top {
-    justify-content: space-between;
-  }
-
-  .menubar_topLabel p,
-  .menubar_top span {
-    display: block;
-  }
-
-  .menubar_topLabel svg,
-  .menuItem_label svg,
-  .menuItem_labelLink sv {
-    width: 23px;
-    height: 23px;
-  }
 
   .menubar_topLabel p {
     margin: 0 !important;
-  }
-
-  .menubar_top span {
-    background-color: var(--mantine-color-success-4);
-    color: var(--mantine-color-white-4);
-    border-radius: 4px;
-    vertical-align: middle;
-    padding: 2px 4px;
-    font-size: 11.4px;
-    font-weight: 700;
-    line-height: 1;
-    float: right !important;
-  }
-
-  .menubar_mainCategory,
-  .menuItem_label p,
-  .menuCollapse,
-  .menuItem_labelLink p,
-  .menuItem_sub {
-    display: block;
   }
 
   .menuItem_label p,

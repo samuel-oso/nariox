@@ -7,7 +7,6 @@ import {
   useMantineColorScheme,
   useMantineTheme,
 } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
 import MenubarItem from "./MenubarItem";
 import { MenuItems } from "../assets/data/MenuData";
 import { Key } from "react";
@@ -22,8 +21,6 @@ export default function Sidebar() {
 
   const { pathname } = useLocation();
 
-  const matches = useMediaQuery("(min-width: 1280px)");
-
   return (
     <Box
       sx={{
@@ -33,10 +30,7 @@ export default function Sidebar() {
       }}
       className="menubar_wrapper"
     >
-      <div
-        onClick={() => setOpened((o) => (matches ? !o : o))}
-        className="menubar_top"
-      >
+      <div onClick={() => setOpened((o) => !o)} className="menubar_top">
         <div className="menubar_topLabel">
           <IconHome />
           <p>Dashboards</p>

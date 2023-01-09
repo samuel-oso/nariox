@@ -1,0 +1,147 @@
+.drawer {
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.drawer_wrapper {
+  transition: all 0.1s ease-out;
+  font-size: 15px;
+  width: 250px;
+  padding: 20px 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.drawer_wrapper::-webkit-scrollbar {
+  width: 4px;
+}
+
+.drawer_wrapper::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.drawer_wrapper::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px #6d7781;
+}
+
+.mantine-tk4uid {
+  width: 250px;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+}
+
+.drawer_top {
+  display: flex;
+  align-items: center;
+  padding: 12px 25px;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.drawer_top span {
+  background-color: var(--mantine-color-success-4);
+  color: var(--mantine-color-white-4);
+  border-radius: 4px;
+  vertical-align: middle;
+  padding: 2px 4px;
+  font-size: 11.4px;
+  font-weight: 700;
+  line-height: 1;
+  float: right !important;
+}
+
+.drawer_topLabel {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.drawer_topLabel svg,
+.menuItem_label svg,
+.menuItem_labelLink svg {
+  width: 23px;
+  height: 23px;
+}
+
+.drawer_topLabel p {
+  margin: 0 !important;
+}
+
+.drawerItem_label p,
+.drawerItem_labelLink p {
+  margin: 0 !important;
+}
+
+.drawer__main {
+  position: relative;
+}
+
+.drawer_mainDivider {
+  height: 1px;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 15px;
+  right: 15px;
+}
+
+.drawer_mainTitle {
+  padding: 25px 25px 0;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  cursor: default;
+  text-transform: uppercase;
+  margin-top: 12px;
+  font-size: 11px;
+}
+
+.drawerItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 25px;
+  cursor: pointer;
+}
+
+.drawerItem_label,
+.drawerItem_labelLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.drawerItem_labelLink {
+  padding: 12px 25px;
+  text-decoration: none;
+}
+
+.drawerItem_subLabel {
+  cursor: pointer;
+  padding: 8px 25px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.drawerCollapse {
+  transition: ease-in 0.2s;
+}
+
+.drawerCollapse .open {
+  transform: rotate(180deg);
+  transition: ease-out 0.2s;
+}
+
+.drawerItem_sub {
+  padding-left: 34px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .drawer {
+    display: none;
+  }
+}

@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 8px;
   position: relative;
 }
 
@@ -64,6 +64,12 @@
 .navList_menu {
   display: block;
 }
+@media (min-width: 320px) {
+  .navList_start,
+  .navList_end {
+    gap: 15px;
+  }
+}
 
 @media (min-width: 375px) {
   .navList_searchSm {
@@ -97,7 +103,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .navList_icons {
     display: flex;
     align-items: center;
@@ -124,9 +130,17 @@
   .navList_menu {
     display: none;
   }
-}
 
-@media (min-width: 1200px) {
+  .logo_sm {
+    display: none;
+  }
+
+  .logo_lg {
+    display: block;
+    width: 108.5px;
+    height: 24px;
+  }
+
   .navList_new {
     display: flex;
     align-items: center;
@@ -140,12 +154,6 @@
 
   .logo_sm {
     display: none;
-  }
-
-  .logo_lg {
-    display: block;
-    width: 108.5px;
-    height: 24px;
   }
 
   .navList_logos {
