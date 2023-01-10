@@ -1,12 +1,8 @@
-import { Grid, useMantineColorScheme, useMantineTheme } from "@mantine/core";
+import { Grid } from "@mantine/core";
 import StatisticsChartWidget from "./StatisticsChartWidget";
 import { IconArrowNarrowUp, IconArrowNarrowDown } from "@tabler/icons";
 
 const Statistics = () => {
-  const { colorScheme } = useMantineColorScheme();
-  const dark = colorScheme === "dark";
-  const theme = useMantineTheme();
-
   return (
     <Grid className="statsGrid">
       <Grid.Col md={6} lg={3} className="statsGridCol">
