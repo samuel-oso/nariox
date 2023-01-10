@@ -41,7 +41,7 @@ function Theme() {
             ],
             secondary: [
               "#e2e3e5",
-              "#c4c8cb",
+              "#36404a",
               "#a7acb1",
               "#899197",
               "#6c757d",
@@ -101,7 +101,7 @@ function Theme() {
               "#f9fafb",
               "#f8f9fa",
               "#c6c7c8",
-              "#959596",
+              "#8c98a5",
               "#d4d6dd",
               "#424e5a",
             ],
@@ -117,7 +117,7 @@ function Theme() {
               "#313131",
             ],
             grey300: [
-              "#f9fafc",
+              "#acbfd2",
               "#f3f5f9",
               "#eef1f7",
               "#e8ecf4",
@@ -207,7 +207,7 @@ function Theme() {
             ],
             white: [
               "#ffffff12",
-              "#40454f",
+              "#3b454f",
               "#f3f4f7",
               "#ffffff",
               "#ffffff",
@@ -227,6 +227,9 @@ function Theme() {
                     ? theme.colors.white[1]
                     : theme.colors.grey200[4],
                   color: dark ? theme.colors.white[6] : theme.colors.grey400[6],
+                  border: dark
+                    ? "none"
+                    : "1px solid var(--mantine-color-grey300-4)",
                 },
               }),
             },

@@ -8,6 +8,7 @@ import {
 import { IconNotes, IconChevronDown } from "@tabler/icons";
 import DatePicker from "../components/DatePicker";
 import "../../../../styles/pages/Ecommerce.css";
+import Statistics from "../components/Statistics";
 
 function Ecommerce() {
   const { colorScheme } = useMantineColorScheme();
@@ -43,6 +44,17 @@ function Ecommerce() {
             </Button>
           </div>
         </div>
+
+        <Box
+          sx={{
+            padding: "0 20px",
+            backgroundColor: dark
+              ? theme.colors.dark[0]
+              : theme.colors.white[2],
+          }}
+        >
+          <Statistics />
+        </Box>
       </Box>
     </Layout>
   );
