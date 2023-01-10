@@ -35,7 +35,7 @@ function Theme() {
               "#7587f9",
               "#5369f8",
               "#4254c6",
-              "#323f95",
+              "#5369f8",
               "#212a63",
               "#111532",
             ],
@@ -112,7 +112,7 @@ function Theme() {
               "#f8f8f9",
               "#f6f6f7",
               "#c5c5c6",
-              "#949494",
+              "#94a0ad",
               "#626263",
               "#313131",
             ],
@@ -194,7 +194,7 @@ function Theme() {
               "#3c4752",
             ],
             dark: [
-              "#d5d7e0",
+              "#303841",
               "#acaebf",
               "#8c8fa3",
               "#666980",
@@ -208,7 +208,7 @@ function Theme() {
             white: [
               "#ffffff12",
               "#40454f",
-              "#ffffff",
+              "#f3f4f7",
               "#ffffff",
               "#ffffff",
               "#cccccc",
@@ -217,6 +217,7 @@ function Theme() {
               "#333333",
             ],
           },
+          primaryColor: "primary",
           fontFamily: "IBM Plex Sans, sans-serif",
           components: {
             Input: {

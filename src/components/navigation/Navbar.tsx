@@ -1,8 +1,8 @@
-import logo from "../assets/images/logo.png";
-import logoWeb from "../assets/images/logoWeb.png";
-import logoWeb_Dark from "../assets/images/logoWeb_Dark.png";
-import user from "../assets/images/user.png";
-import "../styles/components/Navbar.css";
+import logo from "../../assets/images/logo.png";
+import logoWeb from "../../assets/images/logoWeb.png";
+import logoWeb_Dark from "../../assets/images/logoWeb_Dark.png";
+import user from "../../assets/images/user.png";
+import "../../styles/components/Navbar.css";
 import {
   Avatar,
   Box,
@@ -19,7 +19,7 @@ import {
   IconWorld,
   IconBell,
 } from "@tabler/icons";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "../contexts/ThemeToggle";
 import Drawer from "./Drawer";
 import { useState } from "react";
 

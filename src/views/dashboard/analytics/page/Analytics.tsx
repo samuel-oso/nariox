@@ -1,4 +1,4 @@
-import Layout from "../../utils/Layout";
+import Layout from "../../../../utils/Layout";
 
 function Analytics() {
   return (

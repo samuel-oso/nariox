@@ -1,5 +1,5 @@
 import { IconHome } from "@tabler/icons";
-import "../styles/components/Menubar.css";
+import "../../styles/components/Menubar.css";
 import { useState } from "react";
 import {
   Box,
@@ -8,7 +8,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import MenubarItem from "./MenubarItem";
-import { MenuItems } from "../assets/data/MenuData";
+import { MenuItems } from "../../assets/data/MenuData";
 import { Key } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -41,9 +41,9 @@ export default function Sidebar() {
       <Collapse className="test" in={opened}>
         <div className="menuItem_sub">
           <Link
-            to="/dashboard/analytics"
+            to="/dashboard/ecommerce"
             className={`menuItem_subLabel ${
-              pathname === "/dashboard/analytics" &&
+              pathname === "/dashboard/ecommerce" &&
               "submenubar__content__titleActive"
             }`}
             style={{

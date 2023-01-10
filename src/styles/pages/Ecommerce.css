@@ -1,0 +1,12 @@
+.ecommerce_title_right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ecommerce_title_rightBtn {
+  width: fit-content;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 14px;
+}

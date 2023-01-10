@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Key } from "react";
 import { IconHome } from "@tabler/icons";
-import "../styles/components/Drawer.css";
+import "../../styles/components/Drawer.css";
 
 import {
   Drawer as MantineDrawer,
@@ -11,7 +11,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
-import { MenuItems } from "../assets/data/MenuData";
+import { MenuItems } from "../../assets/data/MenuData";
 import DrawerItem from "./DrawerItem";
 
 type DrawerProps = {
@@ -62,9 +62,9 @@ function Drawer(props: DrawerProps) {
           <Collapse className="test" in={openedDash}>
             <div className="drawerItem_sub">
               <Link
-                to="/dashboard/analytics"
+                to="/dashboard/ecommerce"
                 className={`drawerItem_subLabel ${
-                  pathname === "/dashboard/analytics" &&
+                  pathname === "/dashboard/ecommerce" &&
                   "subdrawer__content__titleActive"
                 }`}
                 style={{
