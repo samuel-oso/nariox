@@ -234,6 +234,10 @@ function Theme() {
               }),
             },
           },
+          breakpoints: {
+            md: 768,
+            lg: 1280,
+          },
         }}
         withGlobalStyles
         withNormalizeCSS

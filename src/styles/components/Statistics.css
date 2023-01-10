@@ -44,3 +44,12 @@
   padding: 0;
   margin-bottom: 24px;
 }
+
+@media (min-width: 768px) {
+  .statsGrid {
+    padding: 0;
+  }
+  .statsGridCol {
+    padding: 0 9.5px;
+  }
+}
