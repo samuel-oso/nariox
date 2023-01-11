@@ -85,6 +85,10 @@ p {
   cursor: pointer;
 }
 
+.mantine-16rfswz {
+  min-height: 100%;
+}
+
 .text-success {
   color: var(--mantine-color-success-4);
 }

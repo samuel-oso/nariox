@@ -13,6 +13,7 @@ import Statistics from "../components/Statistics";
 import Overview from "../components/Overview";
 import RevenueChart from "../components/RevenueChart";
 import TargetChart from "../components/TargetChart";
+import TopPerformers from "../components/TopPerformers";
 
 function Ecommerce() {
   const { colorScheme } = useMantineColorScheme();
@@ -62,6 +63,18 @@ function Ecommerce() {
           <Grid.Col lg={3}>
             <TargetChart />
           </Grid.Col>
+        </Grid>
+
+        <Grid>
+          <Grid.Col lg={4}>
+            <TopPerformers />
+          </Grid.Col>
+          {/* <Grid.Col lg={4}>
+            <Tasks />
+          </Grid.Col>
+          <Grid.Col lg={4}>
+            <LineChart lineChartWithData={lineChartWithData} />
+          </Grid.Col> */}
         </Grid>
       </Box>
     </Layout>
