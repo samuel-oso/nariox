@@ -2,7 +2,7 @@ import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import { Box, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import classNames from "classnames";
-import "../../../../styles/components/Statistics.css";
+import "../../../../styles/pages/Ecommerce.css";
 
 interface StatisticsChartWidgetProps {
   title?: string;
@@ -83,10 +83,8 @@ const StatisticsChartWidget = ({
     <Box
       className="stats_wrapper"
       sx={{
+        backgroundColor: dark ? theme.colors.secondary[1] : "white",
         border: dark ? "none" : "1px solid var(--mantine-color-grey300-4)",
-        backgroundColor: dark
-          ? theme.colors.secondary[1]
-          : theme.colors.grey200[4],
       }}
     >
       <div className="stats_title">

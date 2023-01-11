@@ -2,6 +2,7 @@ import Layout from "../../../../utils/Layout";
 import {
   Box,
   Button,
+  Grid,
   useMantineColorScheme,
   useMantineTheme,
 } from "@mantine/core";
@@ -9,6 +10,9 @@ import { IconNotes, IconChevronDown } from "@tabler/icons";
 import DatePicker from "../components/DatePicker";
 import "../../../../styles/pages/Ecommerce.css";
 import Statistics from "../components/Statistics";
+import Overview from "../components/Overview";
+import RevenueChart from "../components/RevenueChart";
+import TargetChart from "../components/TargetChart";
 
 function Ecommerce() {
   const { colorScheme } = useMantineColorScheme();
@@ -17,13 +21,7 @@ function Ecommerce() {
 
   return (
     <Layout>
-      <Box
-        sx={{
-          backgroundColor: dark ? theme.colors.dark[0] : theme.colors.white[2],
-          height: "100%",
-        }}
-        className="container"
-      >
+      <Box className="container">
         <div className="page_titlebox">
           <h4
             style={{
@@ -45,16 +43,25 @@ function Ecommerce() {
           </div>
         </div>
 
-        <Box
-          sx={{
-            padding: "0 20px",
-            backgroundColor: dark
-              ? theme.colors.dark[0]
-              : theme.colors.white[2],
-          }}
-        >
+        <Box>
           <Statistics />
         </Box>
+
+        <Grid>
+          <Grid.Col lg={3}>
+            <Overview />
+          </Grid.Col>
+          <Grid.Col lg={6}>
+            <div>
+              <RevenueChart />
+            </div>
+          </Grid.Col>
+          <Grid.Col lg={3}>
+            <div>
+              <TargetChart />
+            </div>
+          </Grid.Col>
+        </Grid>
       </Box>
     </Layout>
   );
