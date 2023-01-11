@@ -162,3 +162,19 @@
     margin-right: 24px;
   }
 }
+
+/* Task list Styling */
+.task_checkbox {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.task_checkbox h5 {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.task_checkbox p {
+  font-size: 13px;
+}

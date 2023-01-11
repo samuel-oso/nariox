@@ -233,6 +233,19 @@ function Theme() {
                 },
               }),
             },
+            Checkbox: {
+              styles: (theme) => ({
+                input: {
+                  backgroundColor: dark
+                    ? theme.colors.white[1]
+                    : theme.colors.grey200[4],
+                  color: dark ? theme.colors.white[6] : theme.colors.grey400[6],
+                  border: dark
+                    ? "none"
+                    : "1px solid var(--mantine-color-grey300-4)",
+                },
+              }),
+            },
           },
           breakpoints: {
             md: 768,

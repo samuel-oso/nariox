@@ -112,6 +112,7 @@ const TargetChart = () => {
         backgroundColor: dark ? theme.colors.secondary[1] : "white",
         border: dark ? "none" : "1px solid var(--mantine-color-grey300-4)",
         position: "relative",
+        minHeight: "100%",
       }}
     >
       <div
