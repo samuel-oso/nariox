@@ -17,6 +17,9 @@ import TopPerformers from "../components/TopPerformers";
 import Tasks from "../components/Tasks";
 import LineChart from "../components/LineChart";
 import { lineChartWithData } from "../../../../assets/data/ApexLinearChartData";
+import SalesChart from "../components/SalesChart";
+import RecentOrdersTable from "../components/RecentOrdersTable";
+import { OrderDetails } from "../../../../assets/data/OrderdetailsData";
 
 function Ecommerce() {
   const { colorScheme } = useMantineColorScheme();
@@ -65,6 +68,15 @@ function Ecommerce() {
           </Grid.Col>
           <Grid.Col lg={3}>
             <TargetChart />
+          </Grid.Col>
+        </Grid>
+
+        <Grid>
+          <Grid.Col lg={6}>
+            <SalesChart />
+          </Grid.Col>
+          <Grid.Col lg={6}>
+            <RecentOrdersTable orderDetails={OrderDetails} />
           </Grid.Col>
         </Grid>
 

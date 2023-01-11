@@ -150,6 +150,7 @@ const RevenueChart = () => {
         <h5>revenue</h5>
         <IconDotsVertical size={15} onClick={() => setRevenue((o) => !o)} />
       </div>
+
       <Chart
         options={apexBarChartOpts}
         series={apexBarChartData}
