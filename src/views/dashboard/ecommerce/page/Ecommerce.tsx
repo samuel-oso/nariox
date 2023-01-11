@@ -21,7 +21,12 @@ function Ecommerce() {
 
   return (
     <Layout>
-      <Box className="container">
+      <Box
+        style={{
+          backgroundColor: dark ? theme.colors.dark[0] : theme.colors.white[2],
+        }}
+        className="container"
+      >
         <div className="page_titlebox">
           <h4
             style={{
@@ -52,14 +57,10 @@ function Ecommerce() {
             <Overview />
           </Grid.Col>
           <Grid.Col lg={6}>
-            <div>
-              <RevenueChart />
-            </div>
+            <RevenueChart />
           </Grid.Col>
           <Grid.Col lg={3}>
-            <div>
-              <TargetChart />
-            </div>
+            <TargetChart />
           </Grid.Col>
         </Grid>
       </Box>

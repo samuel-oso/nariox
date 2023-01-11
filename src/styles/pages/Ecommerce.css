@@ -62,7 +62,7 @@
 }
 .statsGridCol {
   padding: 0;
-  margin-bottom: 24px;
+  margin-bottom: 15px;
 }
 
 @media (min-width: 768px) {
@@ -70,7 +70,7 @@
     padding: 0;
   }
   .statsGridCol {
-    padding: 0 9.5px;
+    padding: 0 8px;
   }
 }
 

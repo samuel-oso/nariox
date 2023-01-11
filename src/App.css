@@ -1,5 +1,4 @@
 .Appshell {
-  background-color: greenyellow;
   width: 100%;
 }
 
@@ -76,6 +75,12 @@ p {
   align-items: center;
   padding: 6px 20px;
   gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.cards_collapse_list p {
+  padding: 6px 20px;
   font-size: 14px;
   cursor: pointer;
 }
