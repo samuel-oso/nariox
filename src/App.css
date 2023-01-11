@@ -7,9 +7,6 @@
   height: 100vh;
   padding: 0 !important;
   flex: 1 auto;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .container {
