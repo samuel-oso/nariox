@@ -41,10 +41,9 @@ export default function Sidebar() {
       <Collapse className="test" in={opened}>
         <div className="menuItem_sub">
           <Link
-            to="/dashboard/ecommerce"
+            to="/"
             className={`menuItem_subLabel ${
-              pathname === "/dashboard/ecommerce" &&
-              "submenubar__content__titleActive"
+              pathname === "/" && "submenubar__content__titleActive"
             }`}
             style={{
               color: dark ? theme.colors.grey900[7] : theme.colors.grey700[4],
