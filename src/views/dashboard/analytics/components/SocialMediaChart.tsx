@@ -122,7 +122,7 @@ const SocialMediaChart = () => {
         }}
         className="cards_header"
       >
-        <h5>socail media traffic</h5>
+        <h5>social media traffic</h5>
         <IconDotsVertical size={15} />
       </div>
 
