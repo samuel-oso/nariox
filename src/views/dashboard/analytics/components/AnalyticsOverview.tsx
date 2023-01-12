@@ -38,6 +38,7 @@ const AnalyticsOverview = () => {
         <h5>overviews</h5>
         <IconDotsVertical size={15} />
       </div>
+
       <Tabs className="analytics-Tab" defaultValue="views">
         <Tabs.List
           style={{

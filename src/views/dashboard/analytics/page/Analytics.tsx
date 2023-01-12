@@ -8,6 +8,7 @@ import {
 } from "@mantine/core";
 import AnalyticsOverview from "../components/AnalyticsOverview";
 import NewUsers from "../components/NewUsers";
+import SocialMediaChart from "../components/SocialMediaChart";
 
 function Analytics() {
   const { colorScheme } = useMantineColorScheme();
@@ -41,6 +42,28 @@ function Analytics() {
           <Grid.Col lg={4}>
             <NewUsers />
           </Grid.Col>
+        </Grid>
+
+        <Grid>
+          <Grid.Col lg={6}>
+            <SocialMediaChart />
+          </Grid.Col>
+          {/* <Grid.Col lg={6}>
+            <Grid>
+              <Grid.Col md={6}>
+                <Sources sources={sources} />
+              </Grid.Col>
+              <Grid.Col md={6}>
+                <EngagementOverview engagementOverviews={engagementOverviews} />
+              </Grid.Col>
+              <Grid.Col md={6}>
+                <Platforms platforms={platforms} />
+              </Grid.Col>
+              <Grid.Col md={6}>
+                <Channels channels={channels} />
+              </Grid.Col>
+            </Grid>
+          </Grid.Col> */}
         </Grid>
       </Box>
     </Layout>
