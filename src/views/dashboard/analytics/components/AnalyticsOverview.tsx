@@ -1,23 +1,18 @@
-import { useState } from "react";
 import "../../../../styles/components/AnalyticsOverview.css";
 import { IconDotsVertical } from "@tabler/icons";
 import {
   Tabs,
   useMantineColorScheme,
   useMantineTheme,
-  Collapse,
   Box,
 } from "@mantine/core";
 import SubscribersChart from "./SubscribersChart";
 import TotalViewsChart from "./TotalViewsChart";
 import BounceRateChart from "./BounceRateChart";
-import { IconUpload, IconRefreshDot } from "@tabler/icons";
 
 import {} from "@mantine/core";
 
 const AnalyticsOverview = () => {
-  const [overview, setOverview] = useState(false);
-
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
   const theme = useMantineTheme();
@@ -41,7 +36,7 @@ const AnalyticsOverview = () => {
         className="cards_header"
       >
         <h5>overviews</h5>
-        <IconDotsVertical size={15} onClick={() => setOverview((o) => !o)} />
+        <IconDotsVertical size={15} />
       </div>
       <Tabs className="analytics-Tab" defaultValue="views">
         <Tabs.List
@@ -131,19 +126,6 @@ const AnalyticsOverview = () => {
           <BounceRateChart />
         </Tabs.Panel>
       </Tabs>
-
-      <Collapse className="ellipseCollapse" in={overview}>
-        <div className="py-1">
-          <div className="ellipseItem">
-            <IconRefreshDot />
-            <p>Refresh Report</p>
-          </div>
-          <div className="ellipseItem">
-            <IconUpload />
-            <p>Export Report</p>
-          </div>
-        </div>
-      </Collapse>
     </Box>
   );
 };

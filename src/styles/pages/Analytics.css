@@ -1,0 +1,12 @@
+/* Stats Widget Style */
+.statsWidget {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.statsWidget h3 {
+  margin: 6px 0;
+  font-size: 21.67px;
+  font-weight: 500;
+}

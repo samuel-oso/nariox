@@ -7,6 +7,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import AnalyticsOverview from "../components/AnalyticsOverview";
+import NewUsers from "../components/NewUsers";
 
 function Analytics() {
   const { colorScheme } = useMantineColorScheme();
@@ -37,9 +38,9 @@ function Analytics() {
           <Grid.Col lg={8}>
             <AnalyticsOverview />
           </Grid.Col>
-          {/* <Grid.Col lg={4}>
+          <Grid.Col lg={4}>
             <NewUsers />
-          </Grid.Col> */}
+          </Grid.Col>
         </Grid>
       </Box>
     </Layout>
