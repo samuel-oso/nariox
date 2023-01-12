@@ -62,10 +62,9 @@ function Drawer(props: DrawerProps) {
           <Collapse className="test" in={openedDash}>
             <div className="drawerItem_sub">
               <Link
-                to="/dashboard/ecommerce"
+                to="/"
                 className={`drawerItem_subLabel ${
-                  pathname === "/dashboard/ecommerce" &&
-                  "subdrawer__content__titleActive"
+                  pathname === "/" && "subdrawer__content__titleActive"
                 }`}
                 style={{
                   color: dark
