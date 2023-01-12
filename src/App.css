@@ -32,8 +32,8 @@ p {
 .page_titlebox {
   display: flex;
   flex-direction: column;
-  gap: 24px;
   padding: 20px 0;
+  gap: 24px;
 }
 
 .page_title {
@@ -48,6 +48,12 @@ p {
   align-items: center;
   justify-content: space-between;
   padding: 24px;
+}
+
+.page_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .cards_header h5 {

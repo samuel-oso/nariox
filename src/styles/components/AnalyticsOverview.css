@@ -1,0 +1,25 @@
+.mantine-Tabs-tabsList {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mantine-Tabs-tab {
+  padding: 0.625rem 1.25rem;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.analyticsTab_label p,
+.analyticsTab_label h1 {
+  margin: 10px 0;
+}
+
+@media (min-width: 768px) {
+  .mantine-Tabs-tabsList {
+    flex-direction: row;
+  }
+
+  .mantine-Tabs-tab {
+    width: initial;
+  }
+}
