@@ -11,6 +11,12 @@ import NewUsers from "../components/NewUsers";
 import SocialMediaChart from "../components/SocialMediaChart";
 import Sources from "../components/socialmedia_cards/Sources";
 import { sources } from "../../../../assets/data/SourcesTypes";
+import EngagementOverview from "../components/socialmedia_cards/EngagementOverview";
+import { engagementOverviews } from "../../../../assets/data/EngagementTypes";
+import Platforms from "../components/socialmedia_cards/Platforms";
+import { platforms } from "../../../../assets/data/PlatformsData";
+import Channels from "../components/socialmedia_cards/Channels";
+import { channels } from "../../../../assets/data/ChannelData";
 
 function Analytics() {
   const { colorScheme } = useMantineColorScheme();
@@ -55,7 +61,7 @@ function Analytics() {
               <Grid.Col md={6}>
                 <Sources sources={sources} />
               </Grid.Col>
-              {/* <Grid.Col md={6}>
+              <Grid.Col md={6}>
                 <EngagementOverview engagementOverviews={engagementOverviews} />
               </Grid.Col>
               <Grid.Col md={6}>
@@ -63,7 +69,7 @@ function Analytics() {
               </Grid.Col>
               <Grid.Col md={6}>
                 <Channels channels={channels} />
-              </Grid.Col> */}
+              </Grid.Col>
             </Grid>
           </Grid.Col>
         </Grid>
