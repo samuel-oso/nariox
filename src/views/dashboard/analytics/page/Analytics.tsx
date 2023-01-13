@@ -20,6 +20,7 @@ import { channels } from "../../../../assets/data/ChannelData";
 import ViewsDetails from "../components/ViewDetails";
 import { viewsDetails } from "../../../../assets/data/ViewDetailsData";
 import SessionbyLocations from "../components/SessionbyLocations";
+import SessionbyBrowser from "../components/SessionbyBrowser";
 
 function Analytics() {
   const { colorScheme } = useMantineColorScheme();
@@ -84,9 +85,9 @@ function Analytics() {
           <Grid.Col lg={4}>
             <SessionbyLocations />
           </Grid.Col>
-          {/* <Grid.Col lg={4}>
+          <Grid.Col lg={4}>
             <SessionbyBrowser />
-          </Grid.Col> */}
+          </Grid.Col>
         </Grid>
       </Box>
     </Layout>
