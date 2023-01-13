@@ -17,6 +17,8 @@ import Platforms from "../components/socialmedia_cards/Platforms";
 import { platforms } from "../../../../assets/data/PlatformsData";
 import Channels from "../components/socialmedia_cards/Channels";
 import { channels } from "../../../../assets/data/ChannelData";
+import ViewsDetails from "../components/ViewDetails";
+import { viewsDetails } from "../../../../assets/data/ViewDetailsData";
 
 function Analytics() {
   const { colorScheme } = useMantineColorScheme();
@@ -72,6 +74,18 @@ function Analytics() {
               </Grid.Col>
             </Grid>
           </Grid.Col>
+        </Grid>
+
+        <Grid>
+          <Grid.Col lg={4}>
+            <ViewsDetails viewsDetails={viewsDetails} />
+          </Grid.Col>
+          {/* <Grid.Col lg={4}>
+            <SessionbyLocations />
+          </Grid.Col>
+          <Grid.Col lg={4}>
+            <SessionbyBrowser />
+          </Grid.Col> */}
         </Grid>
       </Box>
     </Layout>
