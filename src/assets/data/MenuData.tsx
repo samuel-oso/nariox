@@ -18,7 +18,7 @@ const MenuItems: MenuItemTypes[] = [
     key: "calendar",
     label: "Calendar",
     icon: <IconCalendar />,
-    url: "/dashboard/analytics",
+    url: "/calendar",
   },
   {
     key: "chat",
