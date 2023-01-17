@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { EventInput } from "@fullcalendar/core";
-import { Button, Input, Modal, Select } from "@mantine/core";
-// import FormInput from "../../components/FormInput";
+import { Button, Modal } from "@mantine/core";
+import FormInput from "../contexts/FormInput";
 
 interface AddEditEventProps {
   isOpen: boolean;
@@ -40,9 +40,9 @@ const AddEditEvent = ({
   const methods = useForm({ defaultValues: event, resolver: schemaResolver });
   const {
     handleSubmit,
-    // register,
-    // control,
-    // formState: { errors },
+    register,
+    control,
+    formState: { errors },
   } = methods;
 
   //   Handle form submission
@@ -69,35 +69,34 @@ const AddEditEvent = ({
             onSubmit={handleSubmit(onSubmitEvent)}
           >
             <div className="mt-6">
-              <Input.Wrapper label="Event Name">
-                <Input
-                  type="text"
-                  name="title"
-                  className="modalInput"
-                  placeholder="Insert Event Name"
-                  // register={register}
-                  key="title"
-                  // errors={errors}
-                  // control={control}
-                />
-              </Input.Wrapper>
+              <FormInput
+                type="text"
+                label="Event Name"
+                name="title"
+                className="modalInput"
+                placeholder="Insert Event Name"
+                register={register}
+                key="title"
+                errors={errors}
+                control={control}
+              />
             </div>
             <div className="mt-6">
-              <Select
+              <FormInput
                 type="select"
                 label="Category"
                 name="className"
                 className="modalSelect flex flex-col"
-                // register={register}
+                register={register}
                 key="className"
-                data={[]} // errors={errors}
-                // control={control}
+                errors={errors}
+                control={control}
               >
                 <option value="bg-danger">Danger</option>
                 <option value="bg-success">Success</option>
                 <option value="bg-primary">Primary</option>
                 <option value="bg-warning">Warning</option>
-              </Select>
+              </FormInput>
             </div>
             <div className="flex items-center justify-between mt-5">
               <div>

@@ -17,7 +17,11 @@ interface IntroCardProps {
 const IntroCard = ({ createNewEvent }: IntroCardProps) => {
   return (
     <div className="calendarCard introCard">
-      <img alt="calendar pic" src={calendarImage} />
+      <img
+        alt="calendar img"
+        style={{ width: "100px", height: "100px" }}
+        src={calendarImage}
+      />
       <div className="mt-7">
         <h5>Welcome to Your Calendar</h5>
         <p className="mt-1">

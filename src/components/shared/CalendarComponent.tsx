@@ -4,7 +4,6 @@ import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import { EventInput } from "@fullcalendar/core";
-import { Box, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 
 interface CalendarProps {
   onDateClick: (value: any) => void;
@@ -24,20 +23,8 @@ const CalendarComponent = ({
     onEventClick(arg);
   };
 
-  const { colorScheme } = useMantineColorScheme();
-  const dark = colorScheme === "dark";
-  const theme = useMantineTheme();
-
   return (
-    <Box
-      sx={{
-        backgroundColor: dark ? theme.colors.secondary[1] : "white",
-        border: dark ? "none" : "1px solid var(--mantine-color-grey300-4)",
-        position: "relative",
-        minHeight: "100%",
-        padding: "20px",
-      }}
-    >
+    <div className="calendarCard">
       <FullCalendar
         plugins={[dayGridPlugin, listPlugin, interactionPlugin, timeGridPlugin]}
         headerToolbar={{
@@ -64,7 +51,7 @@ const CalendarComponent = ({
         dateClick={handleDateClick}
         eventClick={handleEventClick}
       />
-    </Box>
+    </div>
   );
 };
 
