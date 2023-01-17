@@ -111,6 +111,22 @@ p {
   color: var(--mantine-color-warning-4);
 }
 
+.bg-success {
+  background-color: var(--mantine-color-success-4) !important;
+}
+
+.bg-primary {
+  background-color: var(--mantine-color-primary-4) !important;
+}
+
+.bg-warning {
+  background-color: var(--mantine-color-warning-4) !important;
+}
+
+.bg-danger {
+  background-color: var(--mantine-color-error-4) !important;
+}
+
 @media (min-width: 768px) {
   .page_titlebox {
     flex-direction: row;

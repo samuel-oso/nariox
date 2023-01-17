@@ -56,7 +56,7 @@ const AddEditEvent = ({
         opened={isOpen}
         onClose={onClose}
         title={
-          <h5 className="text-sm font-medium">
+          <h5 style={{ fontSize: "14px", fontWeight: "500" }}>
             {isEditable ? "Edit Event" : "Add New Event"}
           </h5>
         }
@@ -68,7 +68,7 @@ const AddEditEvent = ({
             className="modalForm"
             onSubmit={handleSubmit(onSubmitEvent)}
           >
-            <div className="mt-6">
+            <div style={{ marginTop: "24px" }}>
               <FormInput
                 type="text"
                 label="Event Name"
@@ -81,12 +81,12 @@ const AddEditEvent = ({
                 control={control}
               />
             </div>
-            <div className="mt-6">
+            <div style={{ marginTop: "24px" }}>
               <FormInput
                 type="select"
                 label="Category"
                 name="className"
-                className="modalSelect flex flex-col"
+                className="modalSelect"
                 register={register}
                 key="className"
                 errors={errors}
@@ -98,7 +98,7 @@ const AddEditEvent = ({
                 <option value="bg-warning">Warning</option>
               </FormInput>
             </div>
-            <div className="flex items-center justify-between mt-5">
+            <div className=" modalBtns_wrapper">
               <div>
                 {isEditable ? (
                   <Button className="btn modalDelete" onClick={onRemoveEvent}>
@@ -106,7 +106,7 @@ const AddEditEvent = ({
                   </Button>
                 ) : null}
               </div>
-              <div className="flex gap-2">
+              <div className="modalBtn_action">
                 <Button className="btn modalClose" onClick={onClose}>
                   Close
                 </Button>
