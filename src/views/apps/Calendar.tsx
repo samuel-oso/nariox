@@ -7,6 +7,7 @@ import { EventClickArg, EventInput } from "@fullcalendar/core";
 import { EventsData } from "../../assets/data/EventsData";
 import AddEditEvent from "../../components/shared/AddEditEvent";
 import Layout from "../../utils/Layout";
+import "../../styles/pages/Calendar.css";
 import {
   Box,
   Button,
@@ -20,35 +21,64 @@ interface IntroCardProps {
 }
 
 const IntroCard = ({ createNewEvent }: IntroCardProps) => {
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const theme = useMantineTheme();
+
   return (
-    <div className="calendarCard introCard">
-      <img
-        alt="calendar img"
-        style={{ width: "100px", height: "100px" }}
-        src={calendarImage}
-      />
-      <div className="mt-7">
-        <h5>Welcome to Your Calendar</h5>
-        <p className="mt-1">
+    <Box
+      sx={{
+        backgroundColor: dark ? theme.colors.secondary[1] : "white",
+        border: dark ? "none" : "1px solid var(--mantine-color-grey300-4)",
+        padding: "20px",
+        marginBottom: "16px",
+      }}
+      className="introCard"
+    >
+      <img alt="calendar img" src={calendarImage} />
+      <div style={{ marginTop: "28px" }}>
+        <h5
+          style={{
+            color: dark ? theme.colors.grey300[0] : theme.colors.grey800[4],
+          }}
+        >
+          Welcome to Your Calendar
+        </h5>
+        <p
+          style={{
+            color: dark ? theme.colors.grey100[6] : theme.colors.secondary[4],
+            marginTop: "4px",
+            fontSize: "14px",
+          }}
+        >
           The calendar shows the events synced from all your linked calendars.
           Click on event to see or edit the details. You can create new event by
           clicking on "Create New event" button or any cell available in
           calendar below.
         </p>
-        <div className="mt-4 ">
+        <div style={{ marginTop: "16px" }}>
           <Button
             className="btnCreateNew"
-            leftIcon={<IconCirclePlus />}
+            leftIcon={<IconCirclePlus size={16} />}
             onClick={createNewEvent}
           >
             Create New Event
           </Button>
-          <Button className="btnLink" leftIcon={<IconRefresh />}>
+          <Button
+            className="btnLink"
+            style={{
+              border: dark
+                ? "1px solid var(--mantine-color-grey100-8)"
+                : "1px solid var(--mantine-color-grey300-4)",
+              color: dark ? theme.colors.white[2] : theme.colors.grey900[4],
+            }}
+            leftIcon={<IconRefresh size={16} />}
+          >
             Link Calendars
           </Button>
         </div>
       </div>
-    </div>
+    </Box>
   );
 };
 
@@ -139,12 +169,24 @@ const Calendar = () => {
         }}
         className="container"
       >
+        <div className="page_titlebox">
+          <h4
+            style={{
+              color: dark ? theme.colors.grey200[6] : theme.colors.grey800[4],
+            }}
+            className="page_title"
+          >
+            Calendar
+          </h4>
+        </div>
+
         <IntroCard createNewEvent={createNewEvent} />
         <CalendarComponent
           onDateClick={onDateClick}
           onEventClick={onEventClick}
           events={events}
         />
+
         {/* add new event modal */}
         {show ? (
           <AddEditEvent

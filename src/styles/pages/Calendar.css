@@ -1,0 +1,175 @@
+.fc .fc-toolbar {
+  flex-direction: column;
+  align-items: flex-start !important;
+}
+
+.fc-toolbar-title {
+  font-family: "IBM Plex Sans", sans-serif !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  font-size: 20px !important;
+}
+
+.fc-button {
+  box-shadow: none !important;
+}
+
+.fc .fc-button-group > .fc-button,
+.fc .fc-today-button {
+  padding: 4.48px 12.8px !important;
+  font-size: 12.6px !important;
+  background-color: var(--mantine-color-primary-4);
+  border: none !important;
+}
+
+.fc .fc-today-button {
+  background-color: var(--mantine-color-indigo-7) !important;
+}
+
+.fc .fc-button-primary:not(:disabled):active:focus,
+.fc .fc-button-primary:not(:disabled).fc-button-active:focus {
+  box-shadow: none !important;
+  background-color: var(--mantine-color-primary-5);
+}
+
+.fc .fc-button-primary:not(:disabled):active,
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:hover {
+  background-color: var(--mantine-color-primary-5) !important;
+}
+
+.fc-event-time,
+.fc-event-title {
+  color: var(--mantine-color-white-4);
+  font-weight: 500 !important;
+}
+
+.fc-view {
+  margin-top: 10px !important;
+}
+
+.fc .fc-col-header-cell-cushion,
+.fc-theme-standard .fc-list-day-cushion {
+  font-weight: 600 !important;
+  font-size: 14px;
+}
+
+.fc-daygrid th {
+  height: 40px !important;
+  vertical-align: middle !important;
+}
+
+.fc-daygrid-day-frame {
+  height: 60px !important;
+  font-size: 14px;
+}
+
+/* Modal styling */
+.modalInput,
+.modalSelect {
+  width: 100%;
+  border: 1px solid var(--mantine-color-gray-4);
+  padding: 7.2px 14.4px;
+  line-height: 1.5;
+  color: var(--mantine-color-grey700-4);
+  margin-top: 10px;
+  background-clip: padding-box;
+  border-radius: 5px;
+}
+
+.modalSelect {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAMAAACtdX32AAAAdVBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhMdQaAAAAJ3RSTlMAAAECAwQGBwsOFBwkJTg5RUZ4eYCHkJefpaytrsXGy8zW3+Do8vNn0bsyAAAAYElEQVR42tXROwJDQAAA0Ymw1p9kiT+L5P5HVEi3qJn2lcPjtIuzUIJ/rhIGy762N3XaThqMN1ZPALsZPEzG1x8LrFL77DHBnEMxBewz0fJ6LyFHTPL7xhwzWYrJ9z22AqmQBV757MHfAAAAAElFTkSuQmCC);
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.form-label {
+  color: var(--bs-gray-400);
+  font-weight: 600;
+}
+
+.modalInput:focus,
+.modalSelect:focus {
+  outline: none;
+}
+
+.btn {
+  padding: 7.2px 14.4px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.modalDelete {
+  background-color: var(--mantine-color-error-4);
+}
+
+.modalClose {
+  color: var(--mantine-color-grey900-4);
+  background-color: var(--mantine-color-grey100-4);
+}
+
+.modalSave {
+  background-color: var(--mantine-color-success-4);
+}
+
+/* Intro card Styling */
+.introCard {
+  margin-bottom: 16px;
+}
+
+.introCard img {
+  height: auto;
+  width: 50%;
+}
+
+.introCard h5 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--mantine-color-grey800-4);
+}
+
+.introCard p {
+  color: var(--mantine-color-secondary-4);
+}
+
+.btnCreateNew {
+  background-color: var(--mantine-color-primary-4);
+  font-weight: 400;
+  padding: 7.2px 14.4px;
+}
+
+.btnLink {
+  font-weight: 400;
+  margin-left: none;
+  padding: 7.2px 14.4px;
+  margin-top: 10px;
+  background-color: transparent;
+}
+
+@media (min-width: 398px) {
+  .btnLink {
+    margin-left: 8px;
+    margin-top: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .introCard {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .introCard img {
+    width: 162px;
+    height: 109px;
+  }
+}
+@media (min-width: 1200px) {
+  .fc .fc-toolbar {
+    flex-direction: initial;
+    align-items: initial !important;
+  }
+}
