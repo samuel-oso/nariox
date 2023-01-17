@@ -7,7 +7,12 @@ import { EventClickArg, EventInput } from "@fullcalendar/core";
 import { EventsData } from "../../assets/data/EventsData";
 import AddEditEvent from "../../components/shared/AddEditEvent";
 import Layout from "../../utils/Layout";
-import { Button } from "@mantine/core";
+import {
+  Box,
+  Button,
+  useMantineColorScheme,
+  useMantineTheme,
+} from "@mantine/core";
 import { IconCirclePlus, IconRefresh } from "@tabler/icons";
 
 interface IntroCardProps {
@@ -121,9 +126,19 @@ const Calendar = () => {
     setIsEditable(false);
     onOpenModal();
   };
+
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const theme = useMantineTheme();
+
   return (
     <Layout>
-      <div className="main-container">
+      <Box
+        style={{
+          backgroundColor: dark ? theme.colors.dark[0] : theme.colors.white[2],
+        }}
+        className="container"
+      >
         <IntroCard createNewEvent={createNewEvent} />
         <CalendarComponent
           onDateClick={onDateClick}
@@ -142,7 +157,7 @@ const Calendar = () => {
             onAddEvent={onAddEvent}
           />
         ) : null}
-      </div>
+      </Box>
     </Layout>
   );
 };
