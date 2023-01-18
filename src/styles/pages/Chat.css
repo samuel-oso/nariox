@@ -1,0 +1,118 @@
+.chatCard {
+  padding: 20px;
+  border: 1px solid var(--gray);
+  background-color: var(--white);
+  border-radius: 4px;
+  background-color: var(--white);
+  margin-bottom: 8px;
+  position: relative;
+  min-height: 725px;
+}
+.chatSearch {
+  height: 70px;
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  width: 100vw;
+}
+.chatSearch input {
+  height: 37px;
+  background-color: var(--gray-100);
+  color: var(--bs-gray-dark);
+  border-radius: 4px;
+  border: none;
+}
+.form-control {
+  padding: 0;
+  box-shadow: none;
+  background-color: var(--bg-600) !important;
+  border-color: var(--bg-600) !important;
+}
+.form-control::placeholder {
+  color: var(--bs-gray-700);
+}
+.user-status {
+  position: absolute;
+  height: 11px;
+  width: 11px;
+  background-color: var(--bs-gray-800);
+  border: 2.5px solid var(--white);
+  border-radius: 50%;
+  bottom: 0;
+  left: 35px;
+}
+.chatUsers-Profile {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 12px;
+}
+.chatUsers-Profile h5 {
+  color: var(--bs-gray-dark);
+  font-weight: 500;
+}
+.chatProfile-Collapse {
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+  width: 162px;
+  border-radius: 4px;
+  position: absolute;
+  inset: 0px 0px auto auto;
+  transform: translate3d(-20px, 55px, 0px);
+  padding: 4px 0;
+}
+.chatProfile-Item {
+  display: flex;
+  align-items: center;
+  padding: 6px 20px;
+  color: var(--bs-gray-400);
+  font-size: 14px;
+  gap: 10px;
+}
+.chatProfile-Item:hover {
+  background-color: var(--bg-gray-100);
+  cursor: pointer;
+}
+.fullUserList {
+  max-height: 549px;
+  overflow-y: auto;
+}
+
+/* Chat Area */
+.chatArea-icons {
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--bs-gray-dark);
+}
+.chatAreaProfile-Collapse {
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+  width: 204px;
+  border-radius: 4px;
+  position: absolute;
+  inset: 0px 0px auto auto;
+  transform: translate3d(-20px, 60px, 0px);
+  padding: 4px 0;
+}
+.conversation-text {
+  font-size: 13px;
+  margin-left: 12px;
+}
+.odd {
+  text-align: right !important;
+  width: 70% !important;
+}
+.conversation-list {
+  list-style: none;
+  padding: 0 15px;
+  outline: none;
+}
+.conversation-list li {
+  margin-bottom: 20px;
+}
+.conversation-actions {
+  display: none;
+}
+.conversation-actions:hover {
+  display: block;
+}

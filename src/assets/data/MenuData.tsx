@@ -24,7 +24,7 @@ const MenuItems: MenuItemTypes[] = [
     key: "chat",
     label: "Chat",
     icon: <IconMessage />,
-    url: "/dashboard/analytics",
+    url: "/chat",
   },
   {
     key: "email",
