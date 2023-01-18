@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Input } from "@mantine/core";
+import {
+  Input,
+  useMantineColorScheme,
+  useMantineTheme,
+  Box,
+} from "@mantine/core";
 import classNames from "classnames";
 import "../../styles/pages/Chat.css";
 import { USERS, ChatUserType } from "../../assets/data/ChatData";
@@ -41,105 +46,87 @@ const ChatUsers = ({ onUserSelect }: ChatUsersProps) => {
     }
   };
 
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const theme = useMantineTheme();
+
   return (
-    <>
-      <div className="chatCard">
-        {/* Profile Name & DropDown */}
-        <div className="flex items-center justify-between border-bottom pb-3">
-          <div className="chatUsers-Profile">
-            <img
-              src={profilePic}
-              className="rounded-circle"
-              height="48"
-              width="48"
-              alt="ChatProfilePic"
-            />
-            <h5 className="">Micheal J</h5>
-          </div>
-          <div>
-            <IconDotsVertical className="cursor-pointer text-lg" />
-          </div>
+    <Box
+      sx={{
+        backgroundColor: dark ? theme.colors.secondary[1] : "white",
+        border: dark ? "none" : "1px solid var(--mantine-color-grey300-4)",
+      }}
+      className="chat_wrapper"
+    >
+      {/* Profile Name & DropDown */}
+      <div className="chat_profile">
+        <img src={profilePic} alt="profile img" />
+        <h5>Samuel J</h5>
+        <div className="profile_svg">
+          <IconDotsVertical size={16} />
         </div>
+      </div>
 
-        {/* Search for Each Chat */}
-        <div className="chatSearch">
-          <Input
-            type="search"
-            placeholder="Search..."
-            icon={<IconSearch />}
-            onKeyUp={(e: any) => search(e.target.value)}
-          />
-        </div>
+      {/* Search for Each Chat */}
+      <div className="chat_search">
+        <Input
+          type="search"
+          placeholder="Search..."
+          icon={<IconSearch size={16} />}
+          onKeyUp={(e: any) => search(e.target.value)}
+        />
+      </div>
 
-        {/* List of each chat */}
-        <div className="fullUserList">
-          {(user || []).map((user, index) => {
-            return (
-              <Link
-                to="#"
-                key={index}
-                className="text-body"
-                onClick={(e: any) => {
-                  activateUser(user);
-                }}
+      {/* List of each chat */}
+      <div className="chatUsers_wrapper">
+        {(user || []).map((user, index) => {
+          return (
+            <Link
+              to="#"
+              key={index}
+              onClick={(e: any) => {
+                activateUser(user);
+              }}
+              className="chatUsers_link"
+            >
+              <div
+                className={classNames("chatUsers", {
+                  "": user.id === selectedUser.id,
+                })}
               >
-                <div
-                  className={classNames("flex", "items-start", "p-2", "gap-3", {
-                    "bg-light": user.id === selectedUser.id,
-                  })}
-                >
-                  <div className="relative">
-                    <span
-                      className={classNames("user-status", {
-                        "bg-success": user.userStatus === "online",
-                        "bg-danger": user.userStatus === "busy",
-                        "bg-warning": user.userStatus === "away",
-                        "bg-away": user.userStatus === "offline",
-                      })}
-                    />
-                    <img
-                      src={user.avatar}
-                      className="rounded-circle"
-                      height="48"
-                      width="58"
-                      alt="userchat"
-                    />
-                  </div>
-                  <div className="w-full">
-                    <h5
-                      style={{ color: "var(--bs-gray-dark)" }}
-                      className="font-medium"
-                    >
-                      <span className="float-right text-xs">
-                        {user.lastMessageOn}
-                      </span>
-                      {user.name}
-                    </h5>
+                <div className="chatUsers_profile">
+                  <span
+                    className={classNames("chatUser_status", {
+                      "bg-success": user.userStatus === "online",
+                      "bg-danger": user.userStatus === "busy",
+                      "bg-warning": user.userStatus === "away",
+                      "bg-away": user.userStatus === "offline",
+                    })}
+                  />
+                  <img src={user.avatar} alt="userchat" />
+                </div>
+                <div className="chatUsers_msg">
+                  <h5>
+                    <span>{user.lastMessageOn}</span>
+                    {user.name}
+                  </h5>
+                  <div className="chatUsers_msgText">
+                    {user.totalUnread !== 0 && <span>{user.totalUnread}</span>}
                     <p
-                      className="mt-1 mb-0"
-                      style={{ color: "var(--bs-gray-300)" }}
+                      className={classNames("", {
+                        "text-success": user.totalUnread,
+                      })}
                     >
-                      {user.totalUnread !== 0 && (
-                        <span className="float-right bg-danger text-white px-1 rounded text-xs">
-                          {user.totalUnread}
-                        </span>
-                      )}
-                      <span
-                        className={classNames("w-72", {
-                          "text-success": user.totalUnread,
-                        })}
-                      >
-                        {user.lastMessage}
-                      </span>
+                      {user.lastMessage}
                     </p>
                   </div>
                 </div>
-              </Link>
-            );
-          })}
-        </div>
+              </div>
+            </Link>
+          );
+        })}
       </div>
-    </>
+    </Box>
   );
 };
 
