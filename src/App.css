@@ -127,6 +127,18 @@ p {
   background-color: var(--mantine-color-error-4) !important;
 }
 
+.mb-1 {
+  margin-bottom: 4px;
+}
+
+.ms-1 {
+  margin: 4px;
+}
+
+.ml-1 {
+  margin-left: 4px;
+}
+
 @media (min-width: 768px) {
   .page_titlebox {
     flex-direction: row;

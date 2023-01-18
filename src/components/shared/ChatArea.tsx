@@ -1,13 +1,26 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { Card, Dropdown, Row, Col } from "react-bootstrap";
 import classNames from "classnames";
 import * as yup from "yup";
-import { Loader, Center } from "@mantine/core";
+import {
+  Loader,
+  Center,
+  Box,
+  useMantineColorScheme,
+  useMantineTheme,
+} from "@mantine/core";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormInput from "../contexts/FormInput";
-import { IconPhonePlus, IconVideo, IconDotsVertical } from "@tabler/icons";
+import {
+  IconPhonePlus,
+  IconVideo,
+  IconDotsVertical,
+  IconChecks,
+  IconMoodSmile,
+  IconPaperclip,
+  IconCamera,
+  IconSend,
+} from "@tabler/icons";
 
 // default data
 import {
@@ -27,35 +40,18 @@ interface ChatHeaderProps {
 const ChatHeader = ({ selectedUser }: ChatHeaderProps) => {
   return (
     <>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <img
-            src={selectedUser.avatar}
-            className="rounded-circle"
-            height="48"
-            width="48"
-            alt="ChatProfilePic"
-          />
+      <div className="chatArea_profile">
+        <div className="chatArea_img">
+          <img src={selectedUser.avatar} alt="chat area img" />
           <div>
-            <h5
-              style={{ color: "var(--bs-gray-dark)" }}
-              className="font-medium"
-            >
-              {selectedUser.name}
-            </h5>
-            <p style={{ color: "var(--bg-600)" }}>Online</p>
+            <h5>{selectedUser.name}</h5>
+            <p>Online</p>
           </div>
         </div>
-        <div className="flex items-center gap-5">
-          <div className="chatArea-icons">
-            <IconPhonePlus />
-          </div>
-          <div className="chatArea-icons">
-            <IconVideo />
-          </div>
-          <div className="chatArea-icons">
-            <IconDotsVertical className="cursor-pointer text-lg" />
-          </div>
+        <div className="chatArea_icons">
+          <IconPhonePlus />
+          <IconVideo />
+          <IconDotsVertical />
         </div>
       </div>
     </>
@@ -69,110 +65,44 @@ interface UserMessageProps {
 // user messages
 const UserMessage = ({ message, toUser }: UserMessageProps) => {
   return (
-    <>
+    <div>
       {(message.messages || []).map((item, index) => {
         return (
           <li
             key={index}
-            className={classNames("clearfix", {
+            className={classNames("", {
               odd: message.from.id === toUser.id,
               "mb-1 odd":
                 message.messages.length > 1 &&
                 index !== message.messages.length - 1,
             })}
           >
-            <div className="conversation-text ml-0">
+            <div>
               <div
-                className={classNames("flex", {
-                  "justify-end": message.from.id === toUser.id,
+                className={classNames("", {
+                  chat_textwrap: message.from.id === toUser.id,
                 })}
               >
-                {message.from.id === toUser.id && (
-                  <Dropdown className="conversation-actions">
-                    <Dropdown.Toggle
-                      as="a"
-                      className="cursor-pointer text-dark pe-1"
-                    >
-                      <i className="bi bi-three-dots-vertical fs-14"></i>
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu align="end">
-                      <Dropdown.Item>
-                        <i className="bi bi-reply fs-18 me-2"></i>Reply
-                      </Dropdown.Item>
-                      <Dropdown.Item>
-                        <i className="bi bi-star fs-18 me-2"></i>Reply
-                      </Dropdown.Item>
-                      <Dropdown.Item>
-                        <i className="bi bi-trash fs-18 me-2"></i>Delete
-                      </Dropdown.Item>
-                      <Dropdown.Item>
-                        <i className="bi bi-files fs-18 me-2"></i>Copy
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                )}
-
                 {item.type === "text" && (
-                  <div className="ctext-wrap">
+                  <div className="chat_text">
                     <p>{item.value}</p>
                   </div>
                 )}
-
-                {item.type === "file" && (
-                  <Card className="mb-1 shadow-none border text-start">
-                    <div className="p-2">
-                      <Row className="align-items-center">
-                        <Col className="col-auto">
-                          <div className="avatar-sm bg-primary text-white">
-                            <span className="avatar-title rounded">.ZIP</span>
-                          </div>
-                        </Col>
-                        <Col className="ps-0">
-                          <Link to="#" className="text-muted fw-bold">
-                            {item.value.file}
-                          </Link>
-                          <p className="mb-0">{item.value.size}</p>
-                        </Col>
-                        <Col className="col-auto">
-                          <Link to="#" className="ps-3 fs-24">
-                            <i className="bi bi-arrow-down-square"></i>
-                          </Link>
-                        </Col>
-                      </Row>
-                    </div>
-                  </Card>
-                )}
-
-                {message.from.id !== toUser.id && (
-                  <Dropdown className="conversation-actions">
-                    <Dropdown.Toggle
-                      as="a"
-                      className="cursor-pointer text-dark ps-1"
-                    >
-                      <i className="bi bi-three-dots-vertical fs-14"></i>
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu align="start">
-                      <Dropdown.Item>
-                        <i className="bi bi-reply fs-18 me-2"></i>Reply
-                      </Dropdown.Item>
-                      <Dropdown.Item>
-                        <i className="bi bi-star fs-18 me-2"></i>Reply
-                      </Dropdown.Item>
-                      <Dropdown.Item>
-                        <i className="bi bi-trash fs-18 me-2"></i>Delete
-                      </Dropdown.Item>
-                      <Dropdown.Item>
-                        <i className="bi bi-files fs-18 me-2"></i>Copy
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                )}
               </div>
               {index === message.messages.length - 1 && (
-                <p className="text-muted fs-12 mb-0 mt-1">
+                <p
+                  style={{
+                    fontSize: "12px",
+                    marginBottom: "0px",
+                    marginTop: "4px",
+                  }}
+                >
                   {message.sendOn}
+
                   {message.from.id === toUser.id && (
-                    <i className="bi bi-check2-all ms-1 text-success"></i>
+                    <i>
+                      <IconChecks size={14} className="text-success ml-1" />
+                    </i>
                   )}
                 </p>
               )}
@@ -180,7 +110,7 @@ const UserMessage = ({ message, toUser }: UserMessageProps) => {
           </li>
         );
       })}
-    </>
+    </div>
   );
 };
 
@@ -194,7 +124,7 @@ const ChatArea = ({ selectedUser }: ChatAreaProps) => {
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [toUser] = useState<ChatUserType>({
     id: 9,
-    name: "Shreyu N",
+    name: "Samuel J",
     avatar: avatar1,
   });
 
@@ -274,96 +204,90 @@ const ChatArea = ({ selectedUser }: ChatAreaProps) => {
     reset();
   };
 
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const theme = useMantineTheme();
+
   return (
-    <>
-      <div className="chatCard">
-        {loading ? (
-          <Center
-            style={{
-              width: "100%",
-              minHeight: 680,
-            }}
-          >
-            {loading && <Loader />}
-          </Center>
-        ) : (
-          <>
-            <ChatHeader selectedUser={selectedUser} />
-            <div className="mt-1">
-              <div>
-                <ul className="conversation-list px-0 h-100">
-                  {(chatHistory || []).map((item, index) => {
-                    return (
-                      <React.Fragment key={index}>
-                        <li className="position-relative">
-                          <hr />
-                          <h4>
-                            <span className="badge bg-light text-dark position-absolute top-0 start-50 translate-middle">
-                              {item.day}
-                            </span>
-                          </h4>
-                        </li>
-                        {(item.messages || []).map((message, index) => {
-                          return (
-                            <UserMessage
-                              key={index}
-                              message={message}
-                              toUser={toUser}
-                            />
-                          );
-                        })}
-                      </React.Fragment>
-                    );
-                  })}
-                </ul>
-              </div>
-              <div className="mt-2 bg-light p-3 rounded">
-                <form
-                  noValidate
-                  name="chat-form"
-                  id="chat-form"
-                  onSubmit={handleSubmit(sendChatMessage)}
-                >
-                  <div className="row">
-                    <div className="col mb-2 mb-sm-0">
-                      <FormInput
-                        type="text"
-                        name="newMessage"
-                        className="border-0"
-                        placeholder="Enter your text"
-                        register={register}
-                        key="newMessage"
-                        errors={errors}
-                        control={control}
-                      />
-                    </div>
-                    <div className="col-sm-auto">
-                      <div className="btn-group">
-                        <Link to="#" className="btn btn-light">
-                          <i className="bi bi-emoji-smile fs-18"></i>
-                        </Link>
-                        <Link to="#" className="btn btn-light">
-                          <i className="bi bi-paperclip fs-18"></i>
-                        </Link>
-                        <Link to="#" className="btn btn-light">
-                          <i className="bi bi-camera fs-18"></i>
-                        </Link>
-                        <button
-                          type="submit"
-                          className="btn btn-success chat-send"
-                        >
-                          <i className="uil uil-message"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
+    <Box
+      sx={{
+        backgroundColor: dark ? theme.colors.secondary[1] : "white",
+        border: dark ? "none" : "1px solid var(--mantine-color-grey300-4)",
+      }}
+      className="chat_wrapper"
+    >
+      {loading ? (
+        <Center
+          style={{
+            width: "100%",
+            minHeight: 680,
+          }}
+        >
+          {loading && <Loader />}
+        </Center>
+      ) : (
+        <>
+          <ChatHeader selectedUser={selectedUser} />
+          <div style={{ marginTop: "4px" }}>
+            <ul className="chatArea_field">
+              {(chatHistory || []).map((item, index) => {
+                return (
+                  <React.Fragment key={index}>
+                    <li>
+                      <hr />
+                      <h4>{item.day}</h4>
+                    </li>
+                    {(item.messages || []).map((message, index) => {
+                      return (
+                        <UserMessage
+                          key={index}
+                          message={message}
+                          toUser={toUser}
+                        />
+                      );
+                    })}
+                  </React.Fragment>
+                );
+              })}
+            </ul>
+            <div className="chatsend_wrap">
+              <form
+                noValidate
+                name="chat-form"
+                id="chat-form"
+                className="chatsend_form"
+                onSubmit={handleSubmit(sendChatMessage)}
+              >
+                <FormInput
+                  type="text"
+                  name="newMessage"
+                  placeholder="Enter your text"
+                  register={register}
+                  key="newMessage"
+                  errors={errors}
+                  control={control}
+                  style={{}}
+                />
+                <div className="chatsend_icons">
+                  <i>
+                    <IconMoodSmile size={25} />
+                  </i>
+                  <i>
+                    <IconPaperclip size={25} />
+                  </i>
+                  <i>
+                    <IconCamera size={25} />
+                  </i>
+                  <i>
+                    <IconSend size={25} />
+                  </i>
+                </div>
+              </form>
             </div>
-          </>
-        )}
-      </div>
-    </>
+          </div>
+        </>
+      )}
+    </Box>
   );
 };
 
