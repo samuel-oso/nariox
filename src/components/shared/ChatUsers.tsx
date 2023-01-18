@@ -59,7 +59,15 @@ const ChatUsers = ({ onUserSelect }: ChatUsersProps) => {
       className="chat_wrapper"
     >
       {/* Profile Name & DropDown */}
-      <div className="chat_profile">
+      <div
+        style={{
+          color: dark ? theme.colors.grey300[0] : theme.colors.grey800[4],
+          borderBottom: dark
+            ? "1px solid var(--mantine-color-grey100-8)"
+            : "1px solid var(--mantine-color-grey100-7)",
+        }}
+        className="chat_profile"
+      >
         <img src={profilePic} alt="profile img" />
         <h5>Samuel J</h5>
         <div className="profile_svg">
@@ -106,15 +114,26 @@ const ChatUsers = ({ onUserSelect }: ChatUsersProps) => {
                   <img src={user.avatar} alt="userchat" />
                 </div>
                 <div className="chatUsers_msg">
-                  <h5>
+                  <h5
+                    style={{
+                      color: dark
+                        ? theme.colors.grey300[0]
+                        : theme.colors.grey800[4],
+                    }}
+                  >
                     <span>{user.lastMessageOn}</span>
                     {user.name}
                   </h5>
                   <div className="chatUsers_msgText">
                     {user.totalUnread !== 0 && <span>{user.totalUnread}</span>}
                     <p
+                      style={{
+                        color: dark
+                          ? theme.colors.grey100[6]
+                          : theme.colors.secondary[4],
+                      }}
                       className={classNames("", {
-                        "text-success": user.totalUnread,
+                        "": user.totalUnread,
                       })}
                     >
                       {user.lastMessage}

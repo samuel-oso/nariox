@@ -31,7 +31,6 @@
   display: flex;
   align-items: center;
   padding-bottom: 12px;
-  border-bottom: 1px solid #ebeef5 !important;
 }
 
 .chat_profile img,
@@ -136,8 +135,6 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: 12px;
-
-  border-bottom: 1px solid #ebeef5 !important;
 }
 
 .chatArea_img {
@@ -180,12 +177,12 @@
 }
 
 .chatArea_field li h4 {
-  background-color: var(--mantine-color-white-4) !important;
   position: absolute;
   top: 0px;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 13.5px;
+  padding: 2px;
 }
 
 .chat_textwrap {

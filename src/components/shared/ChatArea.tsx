@@ -38,9 +38,21 @@ interface ChatHeaderProps {
 }
 
 const ChatHeader = ({ selectedUser }: ChatHeaderProps) => {
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const theme = useMantineTheme();
+
   return (
     <>
-      <div className="chatArea_profile">
+      <div
+        style={{
+          color: dark ? theme.colors.grey300[0] : theme.colors.grey800[4],
+          borderBottom: dark
+            ? "1px solid var(--mantine-color-grey100-8)"
+            : "1px solid var(--mantine-color-grey100-7)",
+        }}
+        className="chatArea_profile"
+      >
         <div className="chatArea_img">
           <img src={selectedUser.avatar} alt="chat area img" />
           <div>
@@ -64,6 +76,10 @@ interface UserMessageProps {
 }
 // user messages
 const UserMessage = ({ message, toUser }: UserMessageProps) => {
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const theme = useMantineTheme();
+
   return (
     <div>
       {(message.messages || []).map((item, index) => {
@@ -95,6 +111,9 @@ const UserMessage = ({ message, toUser }: UserMessageProps) => {
                     fontSize: "12px",
                     marginBottom: "0px",
                     marginTop: "4px",
+                    color: dark
+                      ? theme.colors.grey300[0]
+                      : theme.colors.grey800[4],
                   }}
                 >
                   {message.sendOn}
@@ -234,8 +253,21 @@ const ChatArea = ({ selectedUser }: ChatAreaProps) => {
                 return (
                   <React.Fragment key={index}>
                     <li>
-                      <hr />
-                      <h4>{item.day}</h4>
+                      <hr
+                        style={{
+                          border: dark
+                            ? "1px solid var(--mantine-color-grey100-8)"
+                            : "1px solid var(--mantine-color-grey100-7)",
+                        }}
+                      />
+                      <h4
+                        style={{
+                          background: dark ? theme.colors.grey900[8] : "white",
+                          color: dark ? theme.colors.grey500[4] : "",
+                        }}
+                      >
+                        {item.day}
+                      </h4>
                     </li>
                     {(item.messages || []).map((message, index) => {
                       return (
@@ -250,7 +282,14 @@ const ChatArea = ({ selectedUser }: ChatAreaProps) => {
                 );
               })}
             </ul>
-            <div className="chatsend_wrap">
+            <div
+              style={{
+                backgroundColor: dark
+                  ? theme.colors.white[1]
+                  : theme.colors.grey200[4],
+              }}
+              className="chatsend_wrap"
+            >
               <form
                 noValidate
                 name="chat-form"
@@ -266,7 +305,12 @@ const ChatArea = ({ selectedUser }: ChatAreaProps) => {
                   key="newMessage"
                   errors={errors}
                   control={control}
-                  style={{}}
+                  style={{
+                    backgroundColor: dark ? theme.colors.secondary[1] : "white",
+                    color: dark
+                      ? theme.colors.grey100[6]
+                      : theme.colors.secondary[4],
+                  }}
                 />
                 <div className="chatsend_icons">
                   <i>
