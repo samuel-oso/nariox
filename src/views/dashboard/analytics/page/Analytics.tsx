@@ -44,7 +44,6 @@ function Analytics() {
           >
             Analytics
           </h4>
-          <div className="ecommerce_title_right"></div>
         </div>
 
         <Grid>
