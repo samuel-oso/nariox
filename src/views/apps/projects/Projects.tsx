@@ -1,10 +1,11 @@
 import {
   Box,
-  Chip,
+  Badge,
   Progress,
   Tooltip,
   useMantineColorScheme,
   useMantineTheme,
+  Grid,
 } from "@mantine/core";
 import { Link } from "react-router-dom";
 import { projects, ProjectTypes } from "../../../assets/data/ProjectData";
@@ -31,89 +32,93 @@ const SingleProject = (props: { project: ProjectTypes }) => {
     );
   }
 
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const theme = useMantineTheme();
+
   return (
-    <Box>
-      <div className="projectList_title">
-        <Chip defaultChecked variant="filled" radius="sm" bg={variant}>
-          {project.state}
-        </Chip>
-        <p>{project.technology}</p>
-      </div>
+    <Box
+      sx={{
+        backgroundColor: dark ? theme.colors.secondary[1] : "white",
+        border: dark ? "none" : "1px solid var(--mantine-color-grey300-4)",
+      }}
+      className="projectList_card"
+    >
+      <div style={{ padding: "20px" }}>
+        <div className="projectList_title">
+          <p className={classNames("text-" + variant)}>{project.technology}</p>
 
-      <h5>{project.title}</h5>
-      <p>{project.shortDesc}</p>
+          <Badge bg={variant} radius="sm">
+            {project.state}
+          </Badge>
+        </div>
 
-      <div>
-        {(modifiedTeamMembers || []).map((member, index) => {
-          return (
-            <Link key={index} to="#">
-              {member.image && (
-                <img src={member.image} className="" alt="member img" />
-              )}
-              {member.variant && (
-                <div className="">
-                  <span
-                    className={classNames(
-                      "avatar-title",
-                      "rounded-circle",
-                      "bg-soft-" + member.variant,
-                      "text-" + member.variant
-                    )}
-                  >
-                    {member.name[0]}
-                  </span>
-                </div>
-              )}
-            </Link>
-          );
-        })}
-        {project.teamMembers.length > modifiedTeamMembers.length && (
-          <div>
-            <div className="">
-              <span className="avatar-title rounded-circle bg-soft-warning text-warning">
+        <h5>{project.title}</h5>
+        <p className="projectList_desc">{project.shortDesc}</p>
+
+        <div className="projectList_img">
+          {(modifiedTeamMembers || []).map((member, index) => {
+            return (
+              <Link key={index} to="#">
+                {member.image && (
+                  <img src={member.image} className="" alt="member img" />
+                )}
+              </Link>
+            );
+          })}
+          {project.teamMembers.length > modifiedTeamMembers.length && (
+            <div className="projectList_imgNo">
+              <span className="bg-soft-warning text-warning">
                 {project.teamMembers.length - displayCount}+
               </span>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
-      <div>
-        <div>
+      <div
+        style={{
+          borderTop: dark
+            ? "1px solid var(--mantine-color-grey100-8)"
+            : "1px solid var(--mantine-color-grey300-4)",
+          padding: "20px",
+        }}
+      >
+        <div className="projectList_icons">
           <ul>
             <li>
               <Tooltip label="Due date">
-                <div>
-                  <i>
-                    <IconCalendar />
-                  </i>
+                <p>
+                  <span>
+                    <IconCalendar size={18} />
+                  </span>
                   {project.endDate}
-                </div>
+                </p>
               </Tooltip>
             </li>
             <li>
               <Tooltip label="Tasks">
-                <div>
-                  <i>
-                    <IconMenu2 />
-                  </i>
+                <p>
+                  <span>
+                    <IconMenu2 size={18} />
+                  </span>
                   {project.totalTasks}
-                </div>
+                </p>
               </Tooltip>
             </li>
             <li>
               <Tooltip label="Comments">
-                <div>
-                  <i>
-                    <IconMessages />
-                  </i>
+                <p>
+                  <span>
+                    <IconMessages size={18} />
+                  </span>
                   {project.totalComments}
-                </div>
+                </p>
               </Tooltip>
             </li>
           </ul>
         </div>
-        <div>
+        <div className="projectList_progress">
           <Tooltip label={project.progress + "% completed"}>
             <Progress
               value={project.progress}
@@ -154,9 +159,20 @@ const Projects = () => {
         <div>
           {(projects || []).map((project, i) => {
             return (
-              <div key={"proj-" + project.id}>
-                <SingleProject project={project} />
-              </div>
+              <>
+                <Grid key={"proj-" + project.id}>
+                  <Grid.Col md={6} lg={4}>
+                    <SingleProject project={project} />
+                  </Grid.Col>
+                  <Grid.Col md={6} lg={4}>
+                    <SingleProject project={project} />
+                  </Grid.Col>
+                  <Grid.Col md={6} lg={4}>
+                    <SingleProject project={project} />
+                  </Grid.Col>
+                </Grid>
+                <div></div>
+              </>
             );
           })}
         </div>
