@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import { projects, ProjectTypes } from "../../../assets/data/ProjectData";
 import Layout from "../../../utils/Layout";
 import classNames from "classnames";
+import "../../../styles/pages/Projects.css";
+import { IconCalendar, IconMenu2, IconMessages } from "@tabler/icons";
 
 const SingleProject = (props: { project: ProjectTypes }) => {
   const project = props.project || {};
@@ -31,8 +33,13 @@ const SingleProject = (props: { project: ProjectTypes }) => {
 
   return (
     <Box>
-      <Chip bg={variant}>{project.state}</Chip>
-      <p>{project.technology}</p>
+      <div className="projectList_title">
+        <Chip defaultChecked variant="filled" radius="sm" bg={variant}>
+          {project.state}
+        </Chip>
+        <p>{project.technology}</p>
+      </div>
+
       <h5>{project.title}</h5>
       <p>{project.shortDesc}</p>
 
@@ -61,13 +68,13 @@ const SingleProject = (props: { project: ProjectTypes }) => {
           );
         })}
         {project.teamMembers.length > modifiedTeamMembers.length && (
-          <Link to="#">
+          <div>
             <div className="">
               <span className="avatar-title rounded-circle bg-soft-warning text-warning">
                 {project.teamMembers.length - displayCount}+
               </span>
             </div>
-          </Link>
+          </div>
         )}
       </div>
 
@@ -76,26 +83,32 @@ const SingleProject = (props: { project: ProjectTypes }) => {
           <ul>
             <li>
               <Tooltip label="Due date">
-                <Link to="#">
-                  <i></i>
+                <div>
+                  <i>
+                    <IconCalendar />
+                  </i>
                   {project.endDate}
-                </Link>
+                </div>
               </Tooltip>
             </li>
             <li>
               <Tooltip label="Tasks">
-                <Link to="#">
-                  <i></i>
+                <div>
+                  <i>
+                    <IconMenu2 />
+                  </i>
                   {project.totalTasks}
-                </Link>
+                </div>
               </Tooltip>
             </li>
             <li>
               <Tooltip label="Comments">
-                <Link to="#">
-                  <i></i>
+                <div>
+                  <i>
+                    <IconMessages />
+                  </i>
                   {project.totalComments}
-                </Link>
+                </div>
               </Tooltip>
             </li>
           </ul>
