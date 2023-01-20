@@ -53,8 +53,21 @@ const SingleProject = (props: { project: ProjectTypes }) => {
           </Badge>
         </div>
 
-        <h5>{project.title}</h5>
-        <p className="projectList_desc">{project.shortDesc}</p>
+        <h5
+          style={{
+            color: dark ? theme.colors.grey300[0] : theme.colors.grey800[4],
+          }}
+        >
+          {project.title}
+        </h5>
+        <p
+          style={{
+            color: dark ? theme.colors.grey100[6] : theme.colors.grey600[4],
+          }}
+          className="projectList_desc"
+        >
+          {project.shortDesc}
+        </p>
 
         <div className="projectList_img">
           {(modifiedTeamMembers || []).map((member, index) => {
@@ -82,6 +95,8 @@ const SingleProject = (props: { project: ProjectTypes }) => {
             ? "1px solid var(--mantine-color-grey100-8)"
             : "1px solid var(--mantine-color-grey300-4)",
           padding: "20px",
+
+          color: dark ? theme.colors.grey100[6] : theme.colors.grey600[4],
         }}
       >
         <div className="projectList_icons">
