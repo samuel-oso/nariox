@@ -84,3 +84,35 @@
 .projectList_progress {
   padding-top: 24px;
 }
+
+/* Project Detail Styling */
+
+.projectDetail_overview h6 {
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 20px;
+}
+
+.projectDetail_overviewGrid {
+  width: 100%;
+  margin: 0px !important;
+}
+
+.projectDetail_overviewGrid .mantine-Grid-col {
+  display: flex;
+  gap: 20px;
+  padding: 24px !important;
+}
+
+.projectDetail_overviewGrid p {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.projectDetail_overviewGrid p span {
+  font-size: 14px;
+  font-weight: 400;
+}

@@ -5,6 +5,7 @@ import Ecommerce from "./views/dashboard/ecommerce/page/Ecommerce";
 import Calendar from "./views/apps/Calendar";
 import Chat from "./views/apps/Chat";
 import Projects from "./views/apps/projects/Projects";
+import ProjectDetail from "./views/apps/projects/detail/ProjectDetail";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/apps/calendar" element={<Calendar />} />
         <Route path="/apps/chat" element={<Chat />} />
         <Route path="/apps/projects/list" element={<Projects />} />
+        <Route path="/apps/projects/details" element={<ProjectDetail />} />
       </Routes>
     </Router>
   );
