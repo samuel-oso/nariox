@@ -87,14 +87,16 @@
 
 /* Project Detail Styling */
 
-.projectDetail_overview h6 {
+.projectDetail_overview h6,
+.projectDetail_content .mantine-Grid-col h6 {
   font-size: 15px;
   font-weight: 600;
   text-transform: uppercase;
   padding: 20px;
 }
 
-.projectDetail_overviewGrid {
+.projectDetail_overviewGrid,
+.projectDetail_content {
   width: 100%;
   margin: 0px !important;
 }
@@ -115,4 +117,8 @@
 .projectDetail_overviewGrid p span {
   font-size: 14px;
   font-weight: 400;
+}
+
+.projectDetail_content .mantine-Grid-col {
+  padding: 0px !important;
 }

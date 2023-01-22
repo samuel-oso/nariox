@@ -10,6 +10,12 @@ import {
   IconSquareCheck,
   IconUsers,
   IconClockHour4,
+  IconCalendar,
+  IconCalendarOff,
+  IconCurrencyDollar,
+  IconUser,
+  IconFilePlus,
+  IconDownload,
 } from "@tabler/icons";
 
 import avatar1 from "../../../../assets/images/avatar-9.jpg";
@@ -17,6 +23,7 @@ import avatar2 from "../../../../assets/images/avatar-10.jpg";
 import avatar3 from "../../../../assets/images/avatar-2.jpg";
 import avatar4 from "../../../../assets/images/avatar-3.jpg";
 import Layout from "../../../../utils/Layout";
+import { Link } from "react-router-dom";
 
 const ProjectDetail = () => {
   const project: ProjectTypes = {
@@ -150,6 +157,128 @@ const ProjectDetail = () => {
             </Grid.Col>
           </Grid>
         </div>
+
+        <Grid className="projectDetail_content">
+          <Grid.Col
+            style={{
+              backgroundColor: dark ? theme.colors.secondary[1] : "white",
+              border: dark
+                ? "none"
+                : "1px solid var(--mantine-color-grey300-4)",
+            }}
+            md={6}
+            lg={8}
+          >
+            <h6
+              style={{
+                borderBottom: dark
+                  ? "1px solid var(--mantine-color-grey100-8)"
+                  : "1px solid var(--mantine-color-grey100-7)",
+                color: dark ? theme.colors.grey200[6] : theme.colors.grey800[4],
+              }}
+            >
+              About Project
+            </h6>
+
+            <div className="projectDetail_text">
+              <p>
+                To an English person, it will seem like simplified English, as a
+                skeptical Cambridge friend of mine told me what Occidental is.
+                The European languages are members of the same family. Their
+                separate existence is a myth.
+              </p>
+              <p>
+                Everyone realizes why a new common language would be desirable:
+                one could refuse to pay expensive translators. To achieve this,
+                it would be necessary to have uniform grammar, pronunciation and
+                more common words. If several languages coalesce, the grammar of
+                the resulting language is more simple and regular than that of
+                the individual languages.
+              </p>
+              <ul>
+                <li>Quis autem vel eum iure</li>
+                <li>Ut enim ad minima veniam</li>
+                <li>Et harum quidem rerum</li>
+                <li>Nam libero cum soluta</li>
+              </ul>
+            </div>
+
+            <div className="projectDetail_tags">
+              <h6>Tags</h6>
+              <div>
+                <Link to="#">Html</Link>
+                <Link to="#">Css</Link>
+                <Link to="#">Bootstrap</Link>
+                <Link to="#">JQuery</Link>
+              </div>
+            </div>
+
+            <Grid className="projectDetail_dates">
+              <Grid.Col>
+                <p>
+                  <IconCalendar />
+                  Start Date
+                </p>
+                <h5>{project.startDate}</h5>
+              </Grid.Col>
+              <Grid.Col>
+                <p>
+                  <IconCalendarOff /> Due Date
+                </p>
+                <h5>{project.endDate}</h5>
+              </Grid.Col>
+              <Grid.Col>
+                <p>
+                  <IconCurrencyDollar /> Budget
+                </p>
+                <h5>{project.totalBudget}</h5>
+              </Grid.Col>
+              <Grid.Col>
+                <p>
+                  <IconUser /> Owner
+                </p>
+                <h5>{project.owner}</h5>
+              </Grid.Col>
+            </Grid>
+          </Grid.Col>
+
+          <Grid>
+            <h6>Attached Files</h6>
+            <Grid.Col>
+              <IconFilePlus />
+              <p>Landing 1.psd</p>
+              <IconDownload />
+            </Grid.Col>
+            <Grid.Col>
+              <IconFilePlus />
+              <p>Landing 1.psd</p>
+              <IconDownload />
+            </Grid.Col>
+          </Grid>
+
+          <Grid.Col
+            style={{
+              backgroundColor: dark ? theme.colors.secondary[1] : "white",
+              border: dark
+                ? "none"
+                : "1px solid var(--mantine-color-grey300-4)",
+              padding: "20px",
+            }}
+            md={6}
+            lg={4}
+          >
+            <h6
+              style={{
+                borderBottom: dark
+                  ? "1px solid var(--mantine-color-grey100-8)"
+                  : "1px solid var(--mantine-color-grey100-7)",
+                color: dark ? theme.colors.grey200[6] : theme.colors.grey800[4],
+              }}
+            >
+              Project Activities
+            </h6>
+          </Grid.Col>
+        </Grid>
       </Box>
     </Layout>
   );
