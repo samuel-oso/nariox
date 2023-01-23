@@ -156,7 +156,12 @@ const ProjectDetail = () => {
           </Grid>
         </div>
 
-        <Grid className="projectDetail_content">
+        <Grid
+          style={{
+            color: dark ? theme.colors.grey200[6] : theme.colors.grey800[4],
+          }}
+          className="projectDetail_content"
+        >
           <Grid.Col
             style={{
               backgroundColor: dark ? theme.colors.secondary[1] : "white",
