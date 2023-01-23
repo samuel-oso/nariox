@@ -14,8 +14,6 @@ import {
   IconCalendarOff,
   IconCurrencyDollar,
   IconUser,
-  IconFilePlus,
-  IconDownload,
 } from "@tabler/icons";
 
 import avatar1 from "../../../../assets/images/avatar-9.jpg";
@@ -171,9 +169,6 @@ const ProjectDetail = () => {
           >
             <h6
               style={{
-                borderBottom: dark
-                  ? "1px solid var(--mantine-color-grey100-8)"
-                  : "1px solid var(--mantine-color-grey100-7)",
                 color: dark ? theme.colors.grey200[6] : theme.colors.grey800[4],
               }}
             >
@@ -214,47 +209,33 @@ const ProjectDetail = () => {
             </div>
 
             <Grid className="projectDetail_dates">
-              <Grid.Col>
+              <Grid.Col md={6} lg={3}>
                 <p>
-                  <IconCalendar />
+                  <IconCalendar size={18} />
                   Start Date
                 </p>
                 <h5>{project.startDate}</h5>
               </Grid.Col>
-              <Grid.Col>
+              <Grid.Col md={6} lg={3}>
                 <p>
-                  <IconCalendarOff /> Due Date
+                  <IconCalendarOff size={18} /> Due Date
                 </p>
                 <h5>{project.endDate}</h5>
               </Grid.Col>
-              <Grid.Col>
+              <Grid.Col md={6} lg={3}>
                 <p>
-                  <IconCurrencyDollar /> Budget
+                  <IconCurrencyDollar size={18} /> Budget
                 </p>
                 <h5>{project.totalBudget}</h5>
               </Grid.Col>
-              <Grid.Col>
+              <Grid.Col md={6} lg={3}>
                 <p>
-                  <IconUser /> Owner
+                  <IconUser size={18} /> Owner
                 </p>
                 <h5>{project.owner}</h5>
               </Grid.Col>
             </Grid>
           </Grid.Col>
-
-          <Grid>
-            <h6>Attached Files</h6>
-            <Grid.Col>
-              <IconFilePlus />
-              <p>Landing 1.psd</p>
-              <IconDownload />
-            </Grid.Col>
-            <Grid.Col>
-              <IconFilePlus />
-              <p>Landing 1.psd</p>
-              <IconDownload />
-            </Grid.Col>
-          </Grid>
 
           <Grid.Col
             style={{
