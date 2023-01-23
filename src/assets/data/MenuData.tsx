@@ -69,18 +69,7 @@ const MenuItems: MenuItemTypes[] = [
     key: "tasks",
     label: "Tasks",
     icon: <IconClipboard />,
-    children: [
-      {
-        key: "tasks list",
-        label: "List",
-        url: "/dashboard/analytics",
-      },
-      {
-        key: "tasks details",
-        label: "Kanban Board",
-        url: "/dashboard/analytics",
-      },
-    ],
+    url: "/apps/tasks",
   },
   {
     key: "file manager",
