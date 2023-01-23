@@ -1,4 +1,4 @@
-import { activity, ProjectTypes } from "../../../../assets/data/ProjectData";
+import { ProjectTypes } from "../../../../assets/data/ProjectData";
 import {
   Box,
   Grid,
@@ -163,9 +163,9 @@ const ProjectDetail = () => {
               border: dark
                 ? "none"
                 : "1px solid var(--mantine-color-grey300-4)",
+              marginTop: "20px",
             }}
-            md={6}
-            lg={8}
+            md={12}
           >
             <h6
               style={{
@@ -235,29 +235,6 @@ const ProjectDetail = () => {
                 <h5>{project.owner}</h5>
               </Grid.Col>
             </Grid>
-          </Grid.Col>
-
-          <Grid.Col
-            style={{
-              backgroundColor: dark ? theme.colors.secondary[1] : "white",
-              border: dark
-                ? "none"
-                : "1px solid var(--mantine-color-grey300-4)",
-              padding: "20px",
-            }}
-            md={6}
-            lg={4}
-          >
-            <h6
-              style={{
-                borderBottom: dark
-                  ? "1px solid var(--mantine-color-grey100-8)"
-                  : "1px solid var(--mantine-color-grey100-7)",
-                color: dark ? theme.colors.grey200[6] : theme.colors.grey800[4],
-              }}
-            >
-              Project Activities
-            </h6>
           </Grid.Col>
         </Grid>
       </Box>

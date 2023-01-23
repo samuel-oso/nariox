@@ -192,3 +192,7 @@
   margin: 10px 0;
   font-weight: 500;
 }
+
+.projectDetail_dates svg {
+  color: red;
+}
