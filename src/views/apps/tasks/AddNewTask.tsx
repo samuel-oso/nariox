@@ -1,11 +1,8 @@
-import { Row, Col } from "react-bootstrap";
 import { UseFormHandleSubmit, FieldErrors, Control } from "react-hook-form";
 import "../../../styles/components/Tasks.css";
-
-// components
 import FormInput from "../../../components/contexts/FormInput";
 import { DatePicker } from "@mantine/dates";
-import { Modal, Button, Group, Grid } from "@mantine/core";
+import { Modal, Button, Grid } from "@mantine/core";
 
 interface AddNewTaskProps {
   newTaskModal: boolean;
