@@ -1,0 +1,175 @@
+.board {
+  display: block;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.tasks {
+  display: inline-block;
+  width: 22rem;
+  padding: 0 1rem 1rem 1rem;
+  vertical-align: top;
+  background-color: #fff;
+  border: 1px solid #ebeef5 !important;
+  border-radius: 5px;
+}
+
+.tasks:not(:last-child) {
+  margin-right: 1.25rem;
+}
+
+.tasks .card {
+  white-space: normal;
+  margin-top: 1rem;
+}
+
+.tasks .task-header {
+  padding: 1rem;
+  margin: 0 -1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f3f5f9;
+}
+
+.task-header svg {
+  cursor: pointer;
+}
+
+.task-header h5 {
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.task-header span {
+  font-size: 13px;
+  margin-left: 4px;
+}
+
+.notasks {
+  text-align: center;
+  padding-top: 16px;
+}
+
+/* Task list Item */
+
+.taskList_items {
+  min-height: 100px;
+  position: relative;
+}
+
+.taskList_items .card {
+  cursor: pointer;
+}
+
+.taskList_items:before {
+  content: "No Tasks";
+  position: absolute;
+  line-height: 110px;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.taskList_items .mantine-Card-root {
+  padding: 24px;
+  border: 1px solid #ebeef5 !important;
+  margin-top: 16px;
+}
+
+.taskList_items h6 {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 12px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.taskList_content {
+  display: flex;
+  align-items: center;
+  margin-top: 36px;
+}
+
+.taskList_content img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.taskList_content span {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.taskList_content span svg {
+  margin-right: 4px;
+}
+
+.taskList_content small {
+  font-size: 12px;
+  float: right;
+  margin-left: auto;
+}
+
+/* Tasks Add Modal */
+.task-modal-content .form-control-light {
+  background-color: red;
+  border-color: blue !important;
+}
+
+.taskList_modalInput {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.taskList_modalInput input,
+.taskList_modalInput select,
+.taskList_modalInput textarea {
+  min-height: 36px;
+  border-radius: 4px;
+  margin-top: 8px;
+  border: 1px solid var(--mantine-color-grey300-4);
+  background-color: #f6f6f7;
+}
+
+.taskList_modalInput label,
+.taskListModal_datepicker label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.taskListModal_datepicker input {
+  margin-top: 5px;
+}
+
+.taskListModal_btns {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+/* task - gantt */
+.gantt-task-details {
+  min-width: 220px;
+}
+
+/* task search */
+.task-search .search-input {
+  padding-left: 32px;
+  z-index: 10;
+}
+.task-search .icon-search {
+  z-index: 11;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}

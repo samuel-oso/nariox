@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
+import "../../../styles/components/Tasks.css";
 import {
   DragDropContext,
   Droppable,
@@ -14,6 +14,13 @@ import defaultAvatar from "../../../assets/images/avatar-1.jpg";
 import TaskItem from "./TaskItem";
 import AddNewTask from "./AddNewTask";
 import Layout from "../../../utils/Layout";
+import {
+  Box,
+  useMantineColorScheme,
+  useMantineTheme,
+  Tooltip,
+} from "@mantine/core";
+import { IconPlus } from "@tabler/icons";
 
 interface StateType {
   todoTasks: TaskTypes[];
@@ -190,214 +197,227 @@ const Kanban = () => {
     reset();
   };
 
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const theme = useMantineTheme();
+
   return (
     <Layout>
-      <DragDropContext onDragEnd={onDragEnd}>
-        <div className="board">
-          {/* todo */}
-          <Droppable droppableId="todoTasks">
-            {(provided, snapshot) => (
-              <div className="tasks border" ref={provided.innerRef}>
-                <OverlayTrigger
-                  key="bottom"
-                  placement="bottom"
-                  overlay={<Tooltip>Add New Todo Task</Tooltip>}
-                >
-                  <button
-                    className="btn btn-link p-0 text-secondary float-end shadow-none px-0 py-2"
-                    id="addNewTodo"
-                    onClick={() => newTask("Pending", "todoTasks")}
-                  >
-                    <i className="uil-plus"></i>
-                  </button>
-                </OverlayTrigger>
-                <h5 className="mt-0 task-header header-title">
-                  TODO <span className="fs-13">({state.todoTasks.length})</span>
-                </h5>
-
-                {state.todoTasks.length === 0 && (
-                  <p className="text-center text-muted pt-2 mb-0">No Tasks</p>
-                )}
-
-                {state.todoTasks.map((item, index) => (
-                  <Draggable
-                    key={item.id}
-                    draggableId={item.id + ""}
-                    index={index}
-                  >
-                    {(provided, snapshot) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                      >
-                        <TaskItem task={item} />
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-
-          {/* in progress */}
-          <Droppable droppableId="inprogressTasks">
-            {(provided, snapshot) => (
-              <div ref={provided.innerRef} className="tasks border">
-                <OverlayTrigger
-                  key="bottom"
-                  placement="bottom"
-                  overlay={<Tooltip>Add New In Progress Task</Tooltip>}
-                >
-                  <button
-                    className="btn btn-link p-0 text-secondary float-end shadow-none px-0 py-2"
-                    id="addInprogressTask"
-                    onClick={() => newTask("Inprogress", "inprogressTasks")}
-                  >
-                    <i className="uil-plus"></i>
-                  </button>
-                </OverlayTrigger>
-                <h5 className="mt-0 task-header header-title">
-                  In Progress{" "}
-                  <span className="fs-13">
-                    ({state.inprogressTasks.length})
-                  </span>
-                </h5>
-                {state.inprogressTasks.length === 0 && (
-                  <p className="text-center text-muted pt-2 mb-0">No Tasks</p>
-                )}
-
-                {state.inprogressTasks.map((item, index) => (
-                  <Draggable
-                    key={item.id}
-                    draggableId={item.id + ""}
-                    index={index}
-                  >
-                    {(provided, snapshot) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                      >
-                        <TaskItem task={item} />
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-
-          {/* review */}
-          <Droppable droppableId="reviewTasks">
-            {(provided, snapshot) => (
-              <div ref={provided.innerRef} className="tasks">
-                <OverlayTrigger
-                  key="bottom"
-                  placement="bottom"
-                  overlay={<Tooltip>Add New Review Task</Tooltip>}
-                >
-                  <button
-                    className="btn btn-link p-0 text-secondary float-end shadow-none px-0 py-2"
-                    id="addReviewTask"
-                    onClick={() => newTask("Review", "reviewTasks")}
-                  >
-                    <i className="uil-plus"></i>
-                  </button>
-                </OverlayTrigger>
-                <h5 className="mt-0 task-header header-title">
-                  Review ({state.reviewTasks.length})
-                </h5>
-                {state.reviewTasks.length === 0 && (
-                  <p className="text-center text-muted pt-2 mb-0">No Tasks</p>
-                )}
-
-                {state.reviewTasks.map((item, index) => (
-                  <Draggable
-                    key={item.id}
-                    draggableId={item.id + ""}
-                    index={index}
-                  >
-                    {(provided, snapshot) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                      >
-                        <TaskItem task={item} />
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-
-          {/* done */}
-          <Droppable droppableId="doneTasks">
-            {(provided, snapshot) => (
-              <div ref={provided.innerRef} className="tasks">
-                <OverlayTrigger
-                  key="bottom"
-                  placement="bottom"
-                  overlay={<Tooltip>Add New Done Task</Tooltip>}
-                >
-                  <button
-                    className="btn btn-link p-0 text-secondary float-end shadow-none px-0 py-2"
-                    id="addNewDone"
-                    onClick={() => newTask("Done", "doneTasks")}
-                  >
-                    <i className="uil-plus"></i>
-                  </button>
-                </OverlayTrigger>
-                <h5 className="mt-0 task-header header-title">
-                  Done ({state.doneTasks.length})
-                </h5>
-                {state.doneTasks.length === 0 && (
-                  <p className="text-center text-muted pt-2 mb-0">No Tasks</p>
-                )}
-
-                {state.doneTasks.map((item, index) => (
-                  <Draggable
-                    key={item.id}
-                    draggableId={item.id + ""}
-                    index={index}
-                  >
-                    {(provided, snapshot) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                      >
-                        <TaskItem task={item} />
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
+      <Box
+        style={{
+          backgroundColor: dark ? theme.colors.dark[0] : theme.colors.white[2],
+        }}
+        className="container"
+      >
+        <div className="page_titlebox">
+          <h4
+            style={{
+              color: dark ? theme.colors.grey200[6] : theme.colors.grey800[4],
+            }}
+            className="page_title"
+          >
+            Tasks List
+          </h4>
         </div>
-      </DragDropContext>
+        <DragDropContext onDragEnd={onDragEnd}>
+          <div className="board">
+            {/* todo */}
+            <Droppable droppableId="todoTasks">
+              {(provided, snapshot) => (
+                <div className="tasks border" ref={provided.innerRef}>
+                  <div className="mt-0 task-header">
+                    <h5>
+                      Todo
+                      <span>({state.todoTasks.length})</span>
+                    </h5>
+                    <Tooltip label="Add New Todo Task">
+                      <i
+                        id="addNewTodo"
+                        onClick={() => newTask("Pending", "todoTasks")}
+                      >
+                        <IconPlus size={18} />
+                      </i>
+                    </Tooltip>
+                  </div>
 
-      {/* add new task modal */}
-      {newTaskModal && (
-        <AddNewTask
-          newTaskModal={newTaskModal}
-          toggleNewTaskModal={toggleNewTaskModal}
-          handleNewTask={handleNewTask}
-          handleSubmit={handleSubmit}
-          newTaskDetails={newTaskDetails}
-          handleDateChange={handleDateChange}
-          register={register}
-          errors={errors}
-          control={control}
-        />
-      )}
+                  {state.todoTasks.length === 0 && (
+                    <p className="notasks">No Tasks</p>
+                  )}
+
+                  {state.todoTasks.map((item, index) => (
+                    <Draggable
+                      key={item.id}
+                      draggableId={item.id + ""}
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                        >
+                          <TaskItem task={item} />
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+
+            {/* in progress */}
+            <Droppable droppableId="inprogressTasks">
+              {(provided, snapshot) => (
+                <div ref={provided.innerRef} className="tasks border">
+                  <div className="mt-0 task-header">
+                    <h5>
+                      In Progress
+                      <span> ({state.inprogressTasks.length})</span>
+                    </h5>
+                    <Tooltip label="Add New In Progress Task">
+                      <i
+                        id="addNewTodo"
+                        onClick={() => newTask("Pending", "todoTasks")}
+                      >
+                        <IconPlus size={18} />
+                      </i>
+                    </Tooltip>
+                  </div>
+
+                  {state.inprogressTasks.length === 0 && (
+                    <p className="notasks">No Tasks</p>
+                  )}
+
+                  {state.inprogressTasks.map((item, index) => (
+                    <Draggable
+                      key={item.id}
+                      draggableId={item.id + ""}
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                        >
+                          <TaskItem task={item} />
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+
+            {/* review */}
+            <Droppable droppableId="reviewTasks">
+              {(provided, snapshot) => (
+                <div ref={provided.innerRef} className="tasks">
+                  <div className="mt-0 task-header">
+                    <h5>
+                      Review
+                      <span> ({state.reviewTasks.length})</span>
+                    </h5>
+                    <Tooltip label="Add New Review Task">
+                      <i
+                        id="addNewTodo"
+                        onClick={() => newTask("Pending", "todoTasks")}
+                      >
+                        <IconPlus size={18} />
+                      </i>
+                    </Tooltip>
+                  </div>
+
+                  {state.reviewTasks.length === 0 && (
+                    <p className="notasks">No Tasks</p>
+                  )}
+
+                  {state.reviewTasks.map((item, index) => (
+                    <Draggable
+                      key={item.id}
+                      draggableId={item.id + ""}
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                        >
+                          <TaskItem task={item} />
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+
+            {/* done */}
+            <Droppable droppableId="doneTasks">
+              {(provided, snapshot) => (
+                <div ref={provided.innerRef} className="tasks">
+                  <div className="mt-0 task-header">
+                    <h5>
+                      Done
+                      <span> ({state.doneTasks.length})</span>
+                    </h5>
+                    <Tooltip label="Add New Done Task">
+                      <i
+                        id="addNewTodo"
+                        onClick={() => newTask("Pending", "todoTasks")}
+                      >
+                        <IconPlus size={18} />
+                      </i>
+                    </Tooltip>
+                  </div>
+
+                  {state.doneTasks.length === 0 && (
+                    <p className="notasks">No Tasks</p>
+                  )}
+
+                  {state.doneTasks.map((item, index) => (
+                    <Draggable
+                      key={item.id}
+                      draggableId={item.id + ""}
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                        >
+                          <TaskItem task={item} />
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </div>
+        </DragDropContext>
+
+        {/* add new task modal */}
+        {newTaskModal && (
+          <AddNewTask
+            newTaskModal={newTaskModal}
+            toggleNewTaskModal={toggleNewTaskModal}
+            handleNewTask={handleNewTask}
+            handleSubmit={handleSubmit}
+            newTaskDetails={newTaskDetails}
+            handleDateChange={handleDateChange}
+            register={register}
+            errors={errors}
+            control={control}
+          />
+        )}
+      </Box>
     </Layout>
   );
 };

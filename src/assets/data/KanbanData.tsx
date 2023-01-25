@@ -22,7 +22,7 @@ export interface TaskTypes {
 const tasks: TaskTypes[] = [
   {
     id: 1,
-    title: "Ubold v3.0 - Redesign",
+    title: "Finish up portfolio",
     status: "Pending",
     priority: "High",
     userAvatar: avatar5,
@@ -33,7 +33,7 @@ const tasks: TaskTypes[] = [
   },
   {
     id: 2,
-    title: "Minton v3.0 - Redesign",
+    title: "Redesign website",
     status: "Inprogress",
     priority: "Low",
     userAvatar: avatar6,
@@ -44,7 +44,7 @@ const tasks: TaskTypes[] = [
   },
   {
     id: 3,
-    title: "Shreyu v2.1 - Angular and Django",
+    title: "Sign up for Hackathon",
     status: "Review",
     priority: "Low",
     userAvatar: avatar2,
@@ -55,7 +55,7 @@ const tasks: TaskTypes[] = [
   },
   {
     id: 4,
-    title: "Shreyu v2.1 - React, Webpack",
+    title: "Run Javascript server",
     status: "Done",
     priority: "High",
     userAvatar: avatar7,
@@ -66,7 +66,7 @@ const tasks: TaskTypes[] = [
   },
   {
     id: 5,
-    title: "Shreyu 2.2 - Vue.Js and Laravel",
+    title: "Check repo for commits",
     status: "Pending",
     priority: "Low",
     userAvatar: avatar3,
@@ -77,7 +77,7 @@ const tasks: TaskTypes[] = [
   },
   {
     id: 6,
-    title: "Shreyu 2.3 - Rails, NodeJs, Mean",
+    title: "Merge all pending pull requests",
     status: "Pending",
     priority: "Medium",
     userAvatar: avatar4,
@@ -88,7 +88,7 @@ const tasks: TaskTypes[] = [
   },
   {
     id: 7,
-    title: "Shreyu - Landing page and UI Kit",
+    title: "Sync with the product designer",
     status: "Review",
     priority: "Medium",
     userAvatar: avatar7,
@@ -99,7 +99,7 @@ const tasks: TaskTypes[] = [
   },
   {
     id: 8,
-    title: "Shreyu 3.0 - Scoping",
+    title: "Dashboard Implementation",
     status: "Inprogress",
     priority: "High",
     userAvatar: avatar8,
