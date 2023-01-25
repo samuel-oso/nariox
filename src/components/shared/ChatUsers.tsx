@@ -111,7 +111,7 @@ const ChatUsers = ({ onUserSelect }: ChatUsersProps) => {
                       "bg-away": user.userStatus === "offline",
                     })}
                   />
-                  <img src={user.avatar} alt="userchat" />
+                  <img src={user.avatar} alt="userchat!" />
                 </div>
                 <div className="chatUsers_msg">
                   <h5
