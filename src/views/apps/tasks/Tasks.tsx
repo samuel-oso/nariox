@@ -6,7 +6,7 @@ import {
   Droppable,
   Draggable,
   DropResult,
-} from "react-beautiful-dnd";
+} from "@hello-pangea/dnd";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { tasks, TaskTypes } from "../../../assets/data/KanbanData";
