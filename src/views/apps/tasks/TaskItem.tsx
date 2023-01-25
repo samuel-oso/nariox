@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import "../../../styles/components/Tasks.css";
 import { TaskTypes } from "../../../assets/data/KanbanData";
-import { Card } from "@mantine/core";
+import { Card, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import { IconDotsVertical, IconMessage, IconSquareCheck } from "@tabler/icons";
 
 interface TaskItemProps {
@@ -12,9 +12,23 @@ interface TaskItemProps {
 const TaskItem = (props: TaskItemProps) => {
   const task = props.task || {};
 
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const theme = useMantineTheme();
+
   return (
     <div className="taskList_items">
-      <Card>
+      <Card
+        style={{
+          backgroundColor: dark
+            ? theme.colors.grey900[1]
+            : theme.colors.white[4],
+          border: dark
+            ? "1px solid var(--mantine-color-grey500-6)"
+            : "1px solid var(--mantine-color-grey300-4)",
+          color: dark ? theme.colors.grey200[6] : theme.colors.grey800[4],
+        }}
+      >
         <h6>
           {task.title}
           <span>

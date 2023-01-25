@@ -37,6 +37,7 @@ const AddNewTask = ({
       size="lg"
       centered
       title={<h4 className="modal-title">Create New Task</h4>}
+      className="test"
     >
       <form onSubmit={handleSubmit(handleNewTask)}>
         <FormInput

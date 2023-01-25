@@ -206,6 +206,7 @@ const Kanban = () => {
       <Box
         style={{
           backgroundColor: dark ? theme.colors.dark[0] : theme.colors.white[2],
+          color: dark ? theme.colors.grey200[6] : theme.colors.grey800[4],
         }}
         className="container"
       >
@@ -224,8 +225,26 @@ const Kanban = () => {
             {/* todo */}
             <Droppable droppableId="todoTasks">
               {(provided, snapshot) => (
-                <div className="tasks border" ref={provided.innerRef}>
-                  <div className="mt-0 task-header">
+                <div
+                  style={{
+                    backgroundColor: dark
+                      ? theme.colors.grey900[1]
+                      : theme.colors.white[4],
+                    border: dark
+                      ? "none"
+                      : "1px solid var(--mantine-color-grey300-4)",
+                  }}
+                  className="tasks border"
+                  ref={provided.innerRef}
+                >
+                  <div
+                    style={{
+                      backgroundColor: dark
+                        ? theme.colors.grey900[8]
+                        : theme.colors.grey300[1],
+                    }}
+                    className="mt-0 task-header"
+                  >
                     <h5>
                       Todo
                       <span>({state.todoTasks.length})</span>
@@ -269,8 +288,26 @@ const Kanban = () => {
             {/* in progress */}
             <Droppable droppableId="inprogressTasks">
               {(provided, snapshot) => (
-                <div ref={provided.innerRef} className="tasks border">
-                  <div className="mt-0 task-header">
+                <div
+                  style={{
+                    backgroundColor: dark
+                      ? theme.colors.grey900[1]
+                      : theme.colors.white[4],
+                    border: dark
+                      ? "none"
+                      : "1px solid var(--mantine-color-grey300-4)",
+                  }}
+                  ref={provided.innerRef}
+                  className="tasks border"
+                >
+                  <div
+                    style={{
+                      backgroundColor: dark
+                        ? theme.colors.grey900[8]
+                        : theme.colors.grey300[1],
+                    }}
+                    className="mt-0 task-header"
+                  >
                     <h5>
                       In Progress
                       <span> ({state.inprogressTasks.length})</span>
@@ -314,8 +351,26 @@ const Kanban = () => {
             {/* review */}
             <Droppable droppableId="reviewTasks">
               {(provided, snapshot) => (
-                <div ref={provided.innerRef} className="tasks">
-                  <div className="mt-0 task-header">
+                <div
+                  style={{
+                    backgroundColor: dark
+                      ? theme.colors.grey900[1]
+                      : theme.colors.white[4],
+                    border: dark
+                      ? "none"
+                      : "1px solid var(--mantine-color-grey300-4)",
+                  }}
+                  ref={provided.innerRef}
+                  className="tasks"
+                >
+                  <div
+                    style={{
+                      backgroundColor: dark
+                        ? theme.colors.grey900[8]
+                        : theme.colors.grey300[1],
+                    }}
+                    className="mt-0 task-header"
+                  >
                     <h5>
                       Review
                       <span> ({state.reviewTasks.length})</span>
@@ -359,8 +414,26 @@ const Kanban = () => {
             {/* done */}
             <Droppable droppableId="doneTasks">
               {(provided, snapshot) => (
-                <div ref={provided.innerRef} className="tasks">
-                  <div className="mt-0 task-header">
+                <div
+                  style={{
+                    backgroundColor: dark
+                      ? theme.colors.grey900[1]
+                      : theme.colors.white[4],
+                    border: dark
+                      ? "none"
+                      : "1px solid var(--mantine-color-grey300-4)",
+                  }}
+                  ref={provided.innerRef}
+                  className="tasks"
+                >
+                  <div
+                    style={{
+                      backgroundColor: dark
+                        ? theme.colors.grey900[8]
+                        : theme.colors.grey300[1],
+                    }}
+                    className="mt-0 task-header"
+                  >
                     <h5>
                       Done
                       <span> ({state.doneTasks.length})</span>
