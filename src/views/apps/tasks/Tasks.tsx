@@ -217,7 +217,7 @@ const Kanban = () => {
             }}
             className="page_title"
           >
-            Tasks List.
+            Tasks List
           </h4>
         </div>
         <DragDropContext onDragEnd={onDragEnd}>
