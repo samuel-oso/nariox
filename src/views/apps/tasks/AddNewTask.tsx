@@ -1,6 +1,6 @@
 import { UseFormHandleSubmit, FieldErrors, Control } from "react-hook-form";
 import "../../../styles/components/Tasks.css";
-import FormInput from "../../../components/contexts/FormInput";
+import { FormInput } from "../../../components/contexts/";
 import { DatePicker } from "@mantine/dates";
 import { Modal, Button, Grid } from "@mantine/core";
 

@@ -10,7 +10,7 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { yupResolver } from "@hookform/resolvers/yup";
-import FormInput from "../contexts/FormInput";
+import { FormInput } from "../contexts/";
 import {
   IconPhonePlus,
   IconVideo,

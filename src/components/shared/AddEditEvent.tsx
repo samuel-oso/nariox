@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { EventInput } from "@fullcalendar/core";
 import { Button, Modal } from "@mantine/core";
-import FormInput from "../contexts/FormInput";
+import { FormInput } from "../contexts/";
 
 interface AddEditEventProps {
   isOpen: boolean;

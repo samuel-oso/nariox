@@ -34,17 +34,17 @@ const MenuItems: MenuItemTypes[] = [
       {
         key: "inbox",
         label: "Inbox",
-        url: "/dashboard/analytics",
+        url: "/apps/email/inbox",
       },
       {
         key: "read email",
         label: "Read Email",
-        url: "/dashboard/analytics",
+        url: "/apps/email/details",
       },
       {
         key: "compose email",
         label: "Compose Email",
-        url: "/dashboard/analytics",
+        url: "/apps/email/compose",
       },
     ],
   },
