@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Row, Col, Button } from "react-bootstrap";
+import "../../../styles/pages/Email.css";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";

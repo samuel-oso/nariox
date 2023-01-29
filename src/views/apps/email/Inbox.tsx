@@ -10,6 +10,7 @@ import {
   OverlayTrigger,
   Tooltip,
 } from "react-bootstrap";
+import "../../../styles/pages/Email.css";
 import classNames from "classnames";
 import LeftBar from "./LeftBar";
 import { emails as mails, chatUsers } from "../../../assets/data/EmailData";

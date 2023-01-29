@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import img1 from "../../../assets/images/avatar-1.jpg";
 import img2 from "../../../assets/images/avatar-2.jpg";
 import img3 from "../../../assets/images/avatar-6.jpg";
+import "../../../styles/pages/Email.css";
 import { ChatUserTypes } from "../../../assets/data/EmailData";
 
 const ChatBox = () => {

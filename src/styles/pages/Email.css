@@ -1,0 +1,239 @@
+.email-container {
+  background-color: var(--card-bg);
+}
+
+.email-container .inbox-leftbar {
+  padding: var(--card-spacer-x);
+  width: 250px;
+  float: left;
+  padding-bottom: 184px;
+  margin-bottom: -184px;
+}
+
+.email-container .inbox-rightbar {
+  margin-left: 250px;
+  border-left: 5px solid var(--body-bg);
+  padding: 0 0 1.5rem 25px;
+}
+
+.message-list {
+  display: block;
+  padding-left: 0;
+}
+
+.message-list li {
+  position: relative;
+  display: block;
+  height: 48px;
+  line-height: 48px;
+  cursor: default;
+  transition-duration: 0.3s;
+  background: var(--card-bg);
+  margin-bottom: 1px;
+  box-shadow: var(--box-shadow-sm);
+}
+
+.message-list li a {
+  color: var(--gray-700);
+}
+
+.message-list li:hover {
+  box-shadow: var(--box-shadow);
+  transition-duration: 0.05s;
+}
+
+.message-list li .col-mail {
+  float: left;
+  position: relative;
+}
+
+.message-list li .col-mail-1 {
+  width: 320px;
+}
+
+.message-list li .col-mail-1 .star-toggle,
+.message-list li .col-mail-1 .checkbox-wrapper-mail,
+.message-list li .col-mail-1 .dot {
+  display: block;
+  float: left;
+}
+
+.message-list li .col-mail-1 .dot {
+  border: 4px solid transparent;
+  border-radius: 100px;
+  margin: 22px 26px 0;
+  height: 0;
+  width: 0;
+  line-height: 0;
+  font-size: 0;
+}
+
+.message-list li .col-mail-1 .checkbox-wrapper-mail {
+  margin: 15px 10px 0 20px;
+}
+
+.message-list li .col-mail-1 .star-toggle {
+  color: var(--gray-500);
+  margin-left: 10px;
+}
+
+.message-list li .col-mail-1 .title {
+  position: absolute;
+  top: 0;
+  left: 100px;
+  right: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 0;
+  line-height: 50px;
+}
+
+.message-list li .col-mail-2 {
+  position: absolute;
+  top: 0;
+  left: 320px;
+  right: 0;
+  bottom: 0;
+}
+
+.message-list li .col-mail-2 .subject,
+.message-list li .col-mail-2 .date {
+  position: absolute;
+  top: 0;
+}
+
+.message-list li .col-mail-2 .subject {
+  left: 0;
+  right: 110px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.message-list li .col-mail-2 .date {
+  right: 0;
+  width: 100px;
+  padding-left: 10px;
+}
+
+.message-list li.active,
+.message-list li.mail-selected {
+  background: var(--gray-100);
+  transition-duration: 0.05s;
+}
+
+.message-list li.active,
+.message-list li.active:hover {
+  box-shadow: inset 3px 0 0 red;
+}
+
+.message-list li.unread a {
+  color: purple;
+}
+
+.message-list .checkbox-wrapper-mail {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 0 0 0 2px green;
+  border-radius: 3px;
+}
+
+.message-list .checkbox-wrapper-mail input {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.message-list .checkbox-wrapper-mail input:checked ~ label {
+  opacity: 1;
+}
+
+.message-list .checkbox-wrapper-mail label {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  cursor: pointer;
+  background: red;
+  opacity: 0;
+  margin-bottom: 0 !important;
+  transition-duration: 0.05s;
+}
+
+.message-list .checkbox-wrapper-mail label:active {
+  background: #87949b;
+}
+
+.mail-list a {
+  color: orange;
+  padding: 7px 10px;
+  display: block;
+}
+
+.reply-box {
+  border: 2px solid blue;
+}
+
+@media (max-width: 648px) {
+  .email-container .inbox-leftbar {
+    width: 100%;
+    float: none;
+    margin-bottom: 21px;
+    padding-bottom: 1.25rem;
+  }
+
+  .email-container .inbox-rightbar {
+    margin-left: 0;
+    border: 0;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .inbox-rightbar > .btn-group {
+    margin-bottom: 10px;
+  }
+
+  .message-list li .col-mail-1 {
+    width: 150px;
+  }
+
+  .message-list li .col-mail-1 .title {
+    left: 80px;
+  }
+
+  .message-list li .col-mail-2 {
+    left: 160px;
+  }
+
+  .message-list li .col-mail-2 .date {
+    text-align: right;
+    padding-right: 10px;
+    padding-left: 20px;
+  }
+}
+
+.chatbox {
+  position: fixed;
+  right: 35px;
+  bottom: 10px;
+  width: 300px;
+  /* background-color: $card-bg;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow; */
+  z-index: 99;
+}
+
+.chatbox .chat-input .form-control {
+  padding-right: 60px;
+}
+
+.chatbox .chat-link {
+  position: absolute;
+  right: 4px;
+  top: 10px;
+}

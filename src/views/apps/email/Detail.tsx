@@ -9,6 +9,7 @@ import {
   OverlayTrigger,
   Tooltip,
 } from "react-bootstrap";
+import "../../../styles/pages/Email.css";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, ContentState } from "draft-js";
 import htmlToDraft from "html-to-draftjs";
