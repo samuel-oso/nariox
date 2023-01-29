@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm, Resolver, SubmitHandler, FieldValues } from "react-hook-form";
+import { useMantineColorScheme, useMantineTheme } from "@mantine/core";
 
 interface VerticalFromProps<TFormValues extends FieldValues> {
   defaultValues?: any;
@@ -29,8 +30,19 @@ const VerticalForm = <
     formState: { errors },
   } = methods;
 
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const theme = useMantineTheme();
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={formClass} noValidate>
+    <form
+      style={{
+        backgroundColor: dark ? theme.colors.secondary[1] : "white",
+      }}
+      onSubmit={handleSubmit(onSubmit)}
+      className={formClass}
+      noValidate
+    >
       {Array.isArray(children)
         ? children.map((child) => {
             return child.props && child.props.name

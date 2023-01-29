@@ -115,17 +115,14 @@
   line-height: 48px;
   cursor: default;
   transition-duration: 0.3s;
-  background: white;
   margin-bottom: 1px;
 }
 
 .message-list li a {
-  color: var(--gray-700);
   text-decoration: none;
 }
 
 .message-list li:hover {
-  box-shadow: var(--box-shadow);
   transition-duration: 0.05s;
 }
 
@@ -215,22 +212,12 @@
   transition-duration: 0.05s;
 }
 
-.message-list li.active,
-.message-list li.active:hover {
-  box-shadow: inset 3px 0 0 red;
-}
-
-.message-list li.unread a {
-  color: purple;
-}
-
 .message-list .checkbox-wrapper-mail {
   cursor: pointer;
   height: 20px;
   width: 20px;
   position: relative;
   display: inline-block;
-  box-shadow: inset 0 0 0 2px green;
   border-radius: 3px;
 }
 
@@ -250,7 +237,6 @@
   right: 3.5px;
   bottom: 3.5px;
   cursor: pointer;
-  background: red;
   opacity: 0;
   margin-bottom: 0 !important;
   transition-duration: 0.05s;
@@ -261,7 +247,6 @@
 }
 
 .mail-list a {
-  color: orange;
   padding: 7px 10px;
   display: block;
 }

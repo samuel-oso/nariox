@@ -91,7 +91,12 @@ const Compose = () => {
         </div>
 
         <div className="email-container">
-          <Card className="inbox-leftbar">
+          <Card
+            style={{
+              backgroundColor: dark ? theme.colors.secondary[1] : "white",
+            }}
+            className="inbox-leftbar"
+          >
             <Link to="/apps/email/inbox">
               <Button>Inbox</Button>
             </Link>
@@ -102,7 +107,12 @@ const Compose = () => {
             />
           </Card>
 
-          <div className="inbox-rightbar">
+          <div
+            style={{
+              color: dark ? theme.colors.grey200[6] : theme.colors.grey800[4],
+            }}
+            className="inbox-rightbar"
+          >
             <div>
               <VerticalForm
                 onSubmit={handleEmailSave}
@@ -113,12 +123,22 @@ const Compose = () => {
                   name="to"
                   placeholder="To"
                   containerClass={"mb-3"}
+                  style={{
+                    backgroundColor: dark
+                      ? theme.colors.white[1]
+                      : theme.colors.grey200[4],
+                  }}
                 />
                 <FormInput
                   type="text"
                   name="subject"
                   placeholder="Subject"
                   containerClass={"mb-3"}
+                  style={{
+                    backgroundColor: dark
+                      ? theme.colors.white[1]
+                      : theme.colors.grey200[4],
+                  }}
                 />
 
                 <div className="mb-3">

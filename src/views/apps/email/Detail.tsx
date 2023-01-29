@@ -100,7 +100,12 @@ const EmailDetail = () => {
         </div>
 
         <div className="email-container">
-          <Card className="inbox-leftbar">
+          <Card
+            style={{
+              backgroundColor: dark ? theme.colors.secondary[1] : "white",
+            }}
+            className="inbox-leftbar"
+          >
             <Link to="/apps/email/compose">
               <Button>Compose</Button>
             </Link>
@@ -114,9 +119,20 @@ const EmailDetail = () => {
           <div className="inbox-rightbar">
             <div
               className="inbox-rightbar-header"
-              style={{ background: "white", padding: "36px 36px 16px" }}
+              style={{
+                backgroundColor: dark ? theme.colors.secondary[1] : "white",
+                padding: "36px 36px 16px",
+              }}
             >
-              <div style={{ backgroundColor: "#f8f9fa", cursor: "pointer" }}>
+              <div
+                style={{
+                  backgroundColor: dark ? "#424e5a" : "#f8f9fa",
+                  color: dark
+                    ? theme.colors.grey200[6]
+                    : theme.colors.grey800[4],
+                  cursor: "pointer",
+                }}
+              >
                 <Tooltip label="Archived">
                   <div style={{ padding: "0.45rem 0.9rem" }}>
                     <IconArchive size={18} />
@@ -137,7 +153,13 @@ const EmailDetail = () => {
               </div>
             </div>
 
-            <div className="email_content" style={{ background: "white" }}>
+            <div
+              className="email_content"
+              style={{
+                backgroundColor: dark ? theme.colors.secondary[1] : "white",
+                color: dark ? theme.colors.grey200[6] : theme.colors.grey800[4],
+              }}
+            >
               <h5>Hi Bro, How are you?</h5>
 
               <hr />

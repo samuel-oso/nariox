@@ -25,31 +25,64 @@ import {
 } from "@tabler/icons";
 
 const Email = ({ email }: { email: EmailItems }) => {
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const theme = useMantineTheme();
+
   return (
-    <li className={classNames({ unread: !email.is_read })}>
+    <li
+      style={{
+        backgroundColor: dark ? theme.colors.secondary[1] : "white",
+        color: dark ? "#7e8b9a" : "theme.colors.grey700[4]",
+      }}
+      className={classNames({ unread: !email.is_read })}
+    >
       <div className="col-mail col-mail-1">
-        <div className="checkbox-wrapper-mail">
+        <div
+          style={{
+            boxShadow: dark
+              ? "inset 0 0 0 2px #7e8b9a"
+              : "inset 0 0 0 2px #7e8b9a",
+          }}
+          className="checkbox-wrapper-mail"
+        >
           <input
             type="checkbox"
             className="form-check-input"
             id={"mail" + email.id}
           />
-          <label className="toggle" htmlFor={"mail" + email.id}></label>
+          <label
+            style={{
+              backgroundColor: dark ? "rgba(140,152,165,.2)" : "#6c757d",
+            }}
+            className="toggle"
+            htmlFor={"mail" + email.id}
+          ></label>
         </div>
+
         <span
           className={classNames("star-toggle", {
             "text-warning": email.is_important,
           })}
+          style={{ color: dark ? "#7e8b9a" : "theme.colors.grey700[4]" }}
         >
           <IconStar size={20} />
         </span>
-        <Link to="/apps/email/details" className="title">
+        <Link
+          style={{ color: dark ? "#7e8b9a" : "theme.colors.grey700[4]" }}
+          to="/apps/email/details"
+          className="title"
+        >
           {email.from_name}
           {email.number_of_reply > 1 && <span> ({email.number_of_reply})</span>}
         </Link>
       </div>
       <div className="col-mail col-mail-2">
-        <Link to="/apps/email/details" className="subject">
+        <Link
+          style={{ color: dark ? "#7e8b9a" : "theme.colors.grey700[4]" }}
+          to="/apps/email/details"
+          className="subject"
+        >
           {email.subject} &nbsp;&ndash;&nbsp;
           <span className="teaser">{email.teaser}</span>
         </Link>
@@ -168,7 +201,12 @@ const Inbox = () => {
         </div>
 
         <div className="email-container">
-          <Card className="inbox-leftbar">
+          <Card
+            style={{
+              backgroundColor: dark ? theme.colors.secondary[1] : "white",
+            }}
+            className="inbox-leftbar"
+          >
             <Link to="/apps/email/compose">
               <Button>Compose</Button>
             </Link>
@@ -184,7 +222,13 @@ const Inbox = () => {
               className="inbox-rightbar-header"
               style={{ marginBottom: "36px" }}
             >
-              <div style={{ backgroundColor: "white", cursor: "pointer" }}>
+              <div
+                style={{
+                  backgroundColor: dark ? theme.colors.secondary[1] : "white",
+                  color: dark ? theme.colors.white[4] : "black",
+                  cursor: "pointer",
+                }}
+              >
                 <Tooltip label="Archived">
                   <div style={{ padding: "0.45rem 0.9rem" }}>
                     <IconArchive size={18} />
@@ -204,7 +248,11 @@ const Inbox = () => {
                 </Tooltip>
               </div>
 
-              <Card>
+              <Card
+                style={{
+                  color: dark ? theme.colors.white[4] : "black",
+                }}
+              >
                 <p>
                   Showing {startIndex} - {endIndex} of {totalEmails}
                 </p>
@@ -234,13 +282,31 @@ const Inbox = () => {
             <div>
               {startIndex === 1 && (
                 <>
-                  <h5 className="mt-4">Unread</h5>
+                  <h5
+                    style={{
+                      color: dark
+                        ? theme.colors.grey300[0]
+                        : theme.colors.grey800[4],
+                    }}
+                    className="mt-4"
+                  >
+                    Unread
+                  </h5>
                   <ul className="message-list">
                     {(unreadEmails || []).map((email, idx) => {
                       return <Email email={email} key={idx} />;
                     })}
                   </ul>
-                  <h5 className="mt-4">Important</h5>
+                  <h5
+                    style={{
+                      color: dark
+                        ? theme.colors.grey300[0]
+                        : theme.colors.grey800[4],
+                    }}
+                    className="mt-4"
+                  >
+                    Important
+                  </h5>
                   <ul className="message-list">
                     {(importantEmails || []).map((email, idx) => {
                       return <Email email={email} key={idx} />;
@@ -248,7 +314,16 @@ const Inbox = () => {
                   </ul>
                 </>
               )}
-              <h5 className="mt-4">Everything Else</h5>
+              <h5
+                style={{
+                  color: dark
+                    ? theme.colors.grey300[0]
+                    : theme.colors.grey800[4],
+                }}
+                className="mt-4"
+              >
+                Everything Else
+              </h5>
               <ul className="message-list">
                 {(emailList || []).map((email, idx) => {
                   return <Email email={email} key={idx} />;

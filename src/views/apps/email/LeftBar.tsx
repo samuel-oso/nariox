@@ -10,6 +10,7 @@ import {
   IconPhotoStar,
   IconTrash,
 } from "@tabler/icons";
+import { useMantineColorScheme, useMantineTheme } from "@mantine/core";
 
 interface LeftBarProps {
   totalUnreadEmails?: number;
@@ -24,8 +25,17 @@ const LeftBar = ({
 }: LeftBarProps) => {
   const showChat = showChatDetails === undefined && true;
 
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const theme = useMantineTheme();
+
   return (
-    <div className="email_leftbar">
+    <div
+      style={{
+        color: dark ? theme.colors.grey900[7] : theme.colors.grey700[4],
+      }}
+      className="email_leftbar"
+    >
       <div className="email_leftbar_list mt-4">
         <Link
           to="#"
@@ -35,20 +45,40 @@ const LeftBar = ({
           Inbox
           <span className="badge bg-danger">{totalUnreadEmails}</span>
         </Link>
-        <Link to="#">
+        <Link
+          style={{
+            color: dark ? theme.colors.grey900[7] : theme.colors.grey700[4],
+          }}
+          to="#"
+        >
           <IconPhotoStar size={16} />
           Starred
         </Link>
-        <Link to="#">
+        <Link
+          to="#"
+          style={{
+            color: dark ? theme.colors.grey900[7] : theme.colors.grey700[4],
+          }}
+        >
           <IconMailbox size={16} />
           Draft
           <span className="badge bg-info">32</span>
         </Link>
-        <Link to="#">
+        <Link
+          to="#"
+          style={{
+            color: dark ? theme.colors.grey900[7] : theme.colors.grey700[4],
+          }}
+        >
           <IconMailForward size={16} />
           Sent Mail
         </Link>
-        <Link to="#">
+        <Link
+          to="#"
+          style={{
+            color: dark ? theme.colors.grey900[7] : theme.colors.grey700[4],
+          }}
+        >
           <IconTrash size={16} />
           Trash
         </Link>
@@ -57,23 +87,48 @@ const LeftBar = ({
       <h6>Labels</h6>
 
       <div className="email_leftbar_list">
-        <Link to="#">
+        <Link
+          to="#"
+          style={{
+            color: dark ? theme.colors.grey900[7] : theme.colors.grey700[4],
+          }}
+        >
           <IconCircle size={16} className="text-primary" />
           Web App
         </Link>
-        <Link to="#">
+        <Link
+          to="#"
+          style={{
+            color: dark ? theme.colors.grey900[7] : theme.colors.grey700[4],
+          }}
+        >
           <IconCircle size={16} className="text-info" />
           Recharge
         </Link>
-        <Link to="#">
+        <Link
+          to="#"
+          style={{
+            color: dark ? theme.colors.grey900[7] : theme.colors.grey700[4],
+          }}
+        >
           <IconCircle size={16} className="text-success" />
           Wallet Balance
         </Link>
-        <Link to="#">
+        <Link
+          to="#"
+          style={{
+            color: dark ? theme.colors.grey900[7] : theme.colors.grey700[4],
+          }}
+        >
           <IconCircle size={16} className="text-warning" />
           Friends
         </Link>
-        <Link to="#">
+        <Link
+          to="#"
+          style={{
+            color: dark ? theme.colors.grey900[7] : theme.colors.grey700[4],
+          }}
+        >
           <IconCircle size={16} className="text-secondary" />
           Family
         </Link>

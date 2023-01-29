@@ -18,13 +18,13 @@ const MenuItems: MenuItemTypes[] = [
     key: "calendar",
     label: "Calendar",
     icon: <IconCalendar />,
-    url: "apps/calendar",
+    url: "/apps/calendar",
   },
   {
     key: "chat",
     label: "Chat",
     icon: <IconMessage />,
-    url: "apps/chat",
+    url: "/apps/chat",
   },
   {
     key: "email",
@@ -70,12 +70,6 @@ const MenuItems: MenuItemTypes[] = [
     label: "Tasks",
     icon: <IconClipboard />,
     url: "/apps/tasks",
-  },
-  {
-    key: "file manager",
-    label: "File Manager",
-    icon: <IconFilePlus />,
-    url: "/dashboard/analytics",
   },
 ];
 
