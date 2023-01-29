@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Row, Col, Button } from "react-bootstrap";
 import "../../../styles/pages/Email.css";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,6 +11,15 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { FormInput, VerticalForm } from "../../../components/contexts/";
 import LeftBar from "./LeftBar";
 import { emails } from "../../../assets/data/EmailData";
+import {
+  Box,
+  Card,
+  Button,
+  useMantineColorScheme,
+  useMantineTheme,
+} from "@mantine/core";
+import Layout from "../../../utils/Layout";
+import { IconMailForward, IconSend } from "@tabler/icons";
 
 const Compose = () => {
   const [editorState, setEditorState] = useState<any>();
@@ -59,72 +67,88 @@ const Compose = () => {
     setEditorState(editorStates);
   };
 
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const theme = useMantineTheme();
+
   return (
-    <>
-      <Row>
-        <Col>
-          <div className="email-container">
-            <div className="inbox-leftbar">
-              <Link to="/apps/email/inbox" className="btn btn-danger d-block">
-                Inbox
-              </Link>
-              <LeftBar
-                showChatDetails={false}
-                totalUnreadEmails={totalUnreadEmails}
-              />
-            </div>
+    <Layout>
+      <Box
+        style={{
+          backgroundColor: dark ? theme.colors.dark[0] : theme.colors.white[2],
+        }}
+        className="container"
+      >
+        <div className="page_titlebox">
+          <h4
+            style={{
+              color: dark ? theme.colors.grey200[6] : theme.colors.grey800[4],
+            }}
+            className="page_title"
+          >
+            Compose Detail
+          </h4>
+        </div>
 
-            <div className="inbox-rightbar p-4">
-              <div>
-                <VerticalForm
-                  onSubmit={handleEmailSave}
-                  resolver={schemaResolver}
-                >
-                  <FormInput
-                    type="email"
-                    name="to"
-                    placeholder="To"
-                    containerClass={"mb-3"}
+        <div className="email-container">
+          <Card className="inbox-leftbar">
+            <Link to="/apps/email/inbox">
+              <Button>Inbox</Button>
+            </Link>
+
+            <LeftBar
+              showChatDetails={false}
+              totalUnreadEmails={totalUnreadEmails}
+            />
+          </Card>
+
+          <div className="inbox-rightbar">
+            <div>
+              <VerticalForm
+                onSubmit={handleEmailSave}
+                resolver={schemaResolver}
+              >
+                <FormInput
+                  type="email"
+                  name="to"
+                  placeholder="To"
+                  containerClass={"mb-3"}
+                />
+                <FormInput
+                  type="text"
+                  name="subject"
+                  placeholder="Subject"
+                  containerClass={"mb-3"}
+                />
+
+                <div className="mb-3">
+                  <Editor
+                    editorState={editorState}
+                    toolbarClassName="toolbarClassName"
+                    wrapperClassName="wrapperClassName border border-1 border-soft-dark mb-3 card"
+                    editorClassName="editorClassName px-2 pt-0"
+                    editorStyle={{ minHeight: "358px" }}
+                    onEditorStateChange={onEditorStateChange}
                   />
-                  <FormInput
-                    type="text"
-                    name="subject"
-                    placeholder="Subject"
-                    containerClass={"mb-3"}
-                  />
+                </div>
 
-                  <div className="mb-3 card border-0">
-                    <Editor
-                      editorState={editorState}
-                      toolbarClassName="toolbarClassName"
-                      wrapperClassName="wrapperClassName border border-1 border-soft-dark mb-3 card"
-                      editorClassName="editorClassName px-2 pt-0"
-                      editorStyle={{ minHeight: "300px" }}
-                      onEditorStateChange={onEditorStateChange}
-                    />
-                  </div>
-
-                  <div className="mb-3 pt-2">
-                    <div className="text-end">
-                      <Button variant="success" className="me-1">
-                        <i className="uil uil-envelope-edit"></i> Draft
-                      </Button>
-                      <Button type="submit">
-                        {" "}
-                        <span>Send</span>
-                        <i className="uil uil-message ms-2"></i>
-                      </Button>
-                    </div>
-                  </div>
-                </VerticalForm>
-              </div>
+                <div className="email_contentSendBtn">
+                  <Button
+                    className="bg-success"
+                    leftIcon={<IconMailForward size={16} />}
+                  >
+                    Draft
+                  </Button>
+                  <Button rightIcon={<IconSend size={16} />} type="submit">
+                    Send
+                  </Button>
+                </div>
+              </VerticalForm>
             </div>
-
-            <div className="clearfix"></div>
           </div>
-        </Col>
-      </Row>
-    </>
+        </div>
+      </Box>
+    </Layout>
   );
 };
 
