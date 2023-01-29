@@ -111,6 +111,14 @@ p {
   color: var(--mantine-color-warning-4);
 }
 
+.text-info {
+  color: var(--mantine-color-info-4);
+}
+
+.text-secondary {
+  color: var(--mantine-color-secondary-4);
+}
+
 .bg-success {
   background-color: var(--mantine-color-success-4) !important;
 }
@@ -127,6 +135,10 @@ p {
   background-color: var(--mantine-color-error-4) !important;
 }
 
+.bg-info {
+  background-color: var(--mantine-color-info-1) !important;
+}
+
 .mb-1 {
   margin-bottom: 4px;
 }
@@ -137,6 +149,10 @@ p {
 
 .ml-1 {
   margin-left: 4px;
+}
+
+.mt-4 {
+  margin-top: 2.25rem !important;
 }
 
 ul {

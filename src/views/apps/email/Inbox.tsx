@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 import {
   Row,
   Col,
-  Card,
   Dropdown,
   ButtonGroup,
-  Button,
   OverlayTrigger,
   Tooltip,
 } from "react-bootstrap";
@@ -14,6 +12,15 @@ import "../../../styles/pages/Email.css";
 import classNames from "classnames";
 import LeftBar from "./LeftBar";
 import { emails as mails, chatUsers } from "../../../assets/data/EmailData";
+import {
+  Box,
+  Card,
+  Button,
+  useMantineColorScheme,
+  useMantineTheme,
+} from "@mantine/core";
+import Layout from "../../../utils/Layout";
+import {} from "@mantine/core";
 
 const Email = ({ email }: { email: EmailItems }) => {
   return (
@@ -133,185 +140,197 @@ const Inbox = () => {
     );
   };
 
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+  const theme = useMantineTheme();
+
   return (
-    <>
-      <Row>
-        <Col>
-          <div className="email-container bg-transparent">
-            <Card className="inbox-leftbar">
-              <Link to="/apps/email/compose" className="btn btn-danger d-block">
-                Compose
-              </Link>
-              <LeftBar
-                totalUnreadEmails={totalUnreadEmails}
-                chatUsers={chatUsers}
-              />
-            </Card>
-            <div className="inbox-rightbar">
-              <ButtonGroup className="mb-2 me-1">
-                <OverlayTrigger
-                  placement="top"
-                  overlay={<Tooltip id="archived">Archived</Tooltip>}
-                >
-                  {({ ref, ...triggerHandler }) => (
-                    <Button ref={ref} {...triggerHandler} variant="light">
-                      <i className="uil uil-archive-alt"></i>
-                    </Button>
-                  )}
-                </OverlayTrigger>
-                <Button variant="light">
-                  <OverlayTrigger
-                    placement="top"
-                    overlay={<Tooltip id="spam">Spam</Tooltip>}
-                  >
-                    <i className="uil uil-exclamation-octagon"></i>
-                  </OverlayTrigger>
-                </Button>
-                <OverlayTrigger
-                  placement="top"
-                  overlay={<Tooltip id="delete">Delete</Tooltip>}
-                >
-                  <Button variant="light">
-                    <i className="uil uil-trash-alt"></i>
-                  </Button>
-                </OverlayTrigger>
-              </ButtonGroup>
+    <Layout>
+      <Box
+        style={{
+          backgroundColor: dark ? theme.colors.dark[0] : theme.colors.white[2],
+        }}
+        className="container"
+      >
+        <div className="page_titlebox">
+          <h4
+            style={{
+              color: dark ? theme.colors.grey200[6] : theme.colors.grey800[4],
+            }}
+            className="page_title"
+          >
+            Email Inbox
+          </h4>
+        </div>
 
-              <OverlayTrigger
-                placement="bottom"
-                overlay={<Tooltip id="folder">Folder</Tooltip>}
-              >
-                <Dropdown className="btn-group mb-2 me-1">
-                  <Dropdown.Toggle className="btn btn-light">
-                    <i className="uil uil-folder"></i>{" "}
-                    <i className="uil uil-angle-down"></i>
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Header>Move to :</Dropdown.Header>
-                    <Dropdown.Item>Social</Dropdown.Item>
-                    <Dropdown.Item>Promotions</Dropdown.Item>
-                    <Dropdown.Item>Updates</Dropdown.Item>
-                    <Dropdown.Item>Forums</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </OverlayTrigger>
+        <div className="email-container">
+          <Card className="inbox-leftbar">
+            <Link to="/apps/email/compose">
+              <Button>Compose</Button>
+            </Link>
 
+            <LeftBar
+              totalUnreadEmails={totalUnreadEmails}
+              chatUsers={chatUsers}
+            />
+          </Card>
+
+          <div className="inbox-rightbar">
+            <ButtonGroup className="mb-2 me-1">
               <OverlayTrigger
                 placement="top"
-                overlay={<Tooltip id="labels">Labels</Tooltip>}
+                overlay={<Tooltip id="archived">Archived</Tooltip>}
               >
-                <Dropdown className="btn-group mb-2 me-1">
-                  <Dropdown.Toggle className="btn btn-light">
-                    <i className="uil uil-label"></i>{" "}
-                    <i className="uil uil-angle-down"></i>
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Header>Label as:</Dropdown.Header>
-                    <Dropdown.Item>Social</Dropdown.Item>
-                    <Dropdown.Item>Promotions</Dropdown.Item>
-                    <Dropdown.Item>Updates</Dropdown.Item>
-                    <Dropdown.Item>Forums</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </OverlayTrigger>
-
-              <OverlayTrigger
-                placement="bottom"
-                overlay={<Tooltip id="more actions">More Actions</Tooltip>}
-              >
-                <Dropdown className="btn-group mb-2">
-                  <Dropdown.Toggle className="btn btn-light">
-                    <i className="uil uil-ellipsis-h fs-13"></i> More{" "}
-                    <i className="uil uil-angle-down"></i>
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Header>More Options :</Dropdown.Header>
-                    <Dropdown.Item>Mark as Unread</Dropdown.Item>
-                    <Dropdown.Item>Add to Tasks</Dropdown.Item>
-                    <Dropdown.Item>Add Star</Dropdown.Item>
-                    <Dropdown.Item>Mute</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </OverlayTrigger>
-
-              <div className="d-inline-block align-middle float-lg-end">
-                <Row>
-                  <Col xs={8} className="align-self-center">
-                    Showing {startIndex} - {endIndex} of {totalEmails}
-                  </Col>
-                  <Col xs={4}>
-                    <ButtonGroup className="float-end">
-                      {startIndex === 1 ? (
-                        <Button variant="white" className="btn-sm" disabled>
-                          <i className="uil uil-angle-left"></i>
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="primary"
-                          className="btn-sm"
-                          onClick={getPrevPage}
-                        >
-                          <i className="uil uil-angle-left"></i>
-                        </Button>
-                      )}
-                      {endIndex !== totalEmails ? (
-                        <Button
-                          variant="primary"
-                          className="btn-sm"
-                          onClick={getNextPage}
-                        >
-                          <i className="uil uil-angle-right"></i>
-                        </Button>
-                      ) : (
-                        <Button variant="white" className="btn-sm" disabled>
-                          <i className="uil uil-angle-right"></i>
-                        </Button>
-                      )}
-                    </ButtonGroup>
-                  </Col>
-                </Row>
-              </div>
-
-              <div className="mt-2">
-                {startIndex === 1 && (
-                  <>
-                    {" "}
-                    <h5 className="mt-3 mb-2 fs-16">Unread</h5>
-                    <ul className="message-list">
-                      {(unreadEmails || []).map((email, idx) => {
-                        return <Email email={email} key={idx} />;
-                      })}
-                    </ul>
-                    <h5 className="mt-4 mb-2 fs-16">Important</h5>
-                    <ul className="message-list">
-                      {(importantEmails || []).map((email, idx) => {
-                        return <Email email={email} key={idx} />;
-                      })}
-                    </ul>
-                  </>
+                {({ ref, ...triggerHandler }) => (
+                  <Button ref={ref} {...triggerHandler} variant="light">
+                    <i className="uil uil-archive-alt"></i>
+                  </Button>
                 )}
-                <h5
-                  className={classNames(
-                    "mb-2",
-                    "fs-16",
-                    startIndex === 1 ? "mt-4" : "mt-3"
-                  )}
+              </OverlayTrigger>
+              <Button variant="light">
+                <OverlayTrigger
+                  placement="top"
+                  overlay={<Tooltip id="spam">Spam</Tooltip>}
                 >
-                  Everything Else
-                </h5>
-                <ul className="message-list">
-                  {(emailList || []).map((email, idx) => {
-                    return <Email email={email} key={idx} />;
-                  })}
-                </ul>
-              </div>
+                  <i className="uil uil-exclamation-octagon"></i>
+                </OverlayTrigger>
+              </Button>
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip id="delete">Delete</Tooltip>}
+              >
+                <Button variant="light">
+                  <i className="uil uil-trash-alt"></i>
+                </Button>
+              </OverlayTrigger>
+            </ButtonGroup>
+
+            <OverlayTrigger
+              placement="bottom"
+              overlay={<Tooltip id="folder">Folder</Tooltip>}
+            >
+              <Dropdown className="btn-group mb-2 me-1">
+                <Dropdown.Toggle className="btn btn-light">
+                  <i className="uil uil-folder"></i>{" "}
+                  <i className="uil uil-angle-down"></i>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Header>Move to :</Dropdown.Header>
+                  <Dropdown.Item>Social</Dropdown.Item>
+                  <Dropdown.Item>Promotions</Dropdown.Item>
+                  <Dropdown.Item>Updates</Dropdown.Item>
+                  <Dropdown.Item>Forums</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </OverlayTrigger>
+
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip id="labels">Labels</Tooltip>}
+            >
+              <Dropdown className="btn-group mb-2 me-1">
+                <Dropdown.Toggle className="btn btn-light">
+                  <i className="uil uil-label"></i>{" "}
+                  <i className="uil uil-angle-down"></i>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Header>Label as:</Dropdown.Header>
+                  <Dropdown.Item>Social</Dropdown.Item>
+                  <Dropdown.Item>Promotions</Dropdown.Item>
+                  <Dropdown.Item>Updates</Dropdown.Item>
+                  <Dropdown.Item>Forums</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </OverlayTrigger>
+
+            <OverlayTrigger
+              placement="bottom"
+              overlay={<Tooltip id="more actions">More Actions</Tooltip>}
+            >
+              <Dropdown className="btn-group mb-2">
+                <Dropdown.Toggle className="btn btn-light">
+                  <i className="uil uil-ellipsis-h fs-13"></i> More{" "}
+                  <i className="uil uil-angle-down"></i>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Header>More Options :</Dropdown.Header>
+                  <Dropdown.Item>Mark as Unread</Dropdown.Item>
+                  <Dropdown.Item>Add to Tasks</Dropdown.Item>
+                  <Dropdown.Item>Add Star</Dropdown.Item>
+                  <Dropdown.Item>Mute</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </OverlayTrigger>
+
+            <div className="d-inline-block align-middle float-lg-end">
+              <Row>
+                <Col xs={8} className="align-self-center">
+                  Showing {startIndex} - {endIndex} of {totalEmails}
+                </Col>
+                <Col xs={4}>
+                  <ButtonGroup className="float-end">
+                    {startIndex === 1 ? (
+                      <Button variant="white" className="btn-sm" disabled>
+                        <i className="uil uil-angle-left"></i>
+                      </Button>
+                    ) : (
+                      <Button className="btn-sm" onClick={getPrevPage}>
+                        <i className="uil uil-angle-left"></i>
+                      </Button>
+                    )}
+                    {endIndex !== totalEmails ? (
+                      <Button className="btn-sm" onClick={getNextPage}>
+                        <i className="uil uil-angle-right"></i>
+                      </Button>
+                    ) : (
+                      <Button variant="white" className="btn-sm" disabled>
+                        <i className="uil uil-angle-right"></i>
+                      </Button>
+                    )}
+                  </ButtonGroup>
+                </Col>
+              </Row>
             </div>
 
-            <div className="clearfix"></div>
+            <div className="mt-2">
+              {startIndex === 1 && (
+                <>
+                  {" "}
+                  <h5 className="mt-3 mb-2 fs-16">Unread</h5>
+                  <ul className="message-list">
+                    {(unreadEmails || []).map((email, idx) => {
+                      return <Email email={email} key={idx} />;
+                    })}
+                  </ul>
+                  <h5 className="mt-4 mb-2 fs-16">Important</h5>
+                  <ul className="message-list">
+                    {(importantEmails || []).map((email, idx) => {
+                      return <Email email={email} key={idx} />;
+                    })}
+                  </ul>
+                </>
+              )}
+              <h5
+                className={classNames(
+                  "mb-2",
+                  "fs-16",
+                  startIndex === 1 ? "mt-4" : "mt-3"
+                )}
+              >
+                Everything Else
+              </h5>
+              <ul className="message-list">
+                {(emailList || []).map((email, idx) => {
+                  return <Email email={email} key={idx} />;
+                })}
+              </ul>
+            </div>
           </div>
-        </Col>
-      </Row>
-    </>
+
+          <div className="clearfix"></div>
+        </div>
+      </Box>
+    </Layout>
   );
 };
 
