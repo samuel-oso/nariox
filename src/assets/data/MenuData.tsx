@@ -3,7 +3,6 @@ import { ReactComponent as IconMessage } from "../images/IconMessage.svg";
 import { ReactComponent as IconMail } from "../images/IconMail.svg";
 import { ReactComponent as IconBriefcase } from "../images/IconBriefcase.svg";
 import { ReactComponent as IconClipboard } from "../images/IconClipboard.svg";
-import { ReactComponent as IconFilePlus } from "../images/IconFilePlus.svg";
 
 export interface MenuItemTypes {
   key: string;
