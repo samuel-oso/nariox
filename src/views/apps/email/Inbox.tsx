@@ -180,8 +180,11 @@ const Inbox = () => {
           </Card>
 
           <div className="inbox-rightbar">
-            <div className="inbox-rightbar-header">
-              <Card style={{ backgroundColor: "white", cursor: "pointer" }}>
+            <div
+              className="inbox-rightbar-header"
+              style={{ marginBottom: "36px" }}
+            >
+              <div style={{ backgroundColor: "white", cursor: "pointer" }}>
                 <Tooltip label="Archived">
                   <div style={{ padding: "0.45rem 0.9rem" }}>
                     <IconArchive size={18} />
@@ -199,7 +202,7 @@ const Inbox = () => {
                     <IconTrash size={18} />
                   </div>
                 </Tooltip>
-              </Card>
+              </div>
 
               <Card>
                 <p>
