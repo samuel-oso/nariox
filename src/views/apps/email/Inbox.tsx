@@ -1,13 +1,5 @@
 import { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
-import {
-  Row,
-  Col,
-  Dropdown,
-  ButtonGroup,
-  OverlayTrigger,
-  Tooltip,
-} from "react-bootstrap";
 import "../../../styles/pages/Email.css";
 import classNames from "classnames";
 import LeftBar from "./LeftBar";
@@ -16,11 +8,21 @@ import {
   Box,
   Card,
   Button,
+  Tooltip,
   useMantineColorScheme,
   useMantineTheme,
+  Group,
 } from "@mantine/core";
 import Layout from "../../../utils/Layout";
 import {} from "@mantine/core";
+import {
+  IconAlertOctagon,
+  IconArchive,
+  IconChevronLeft,
+  IconChevronRight,
+  IconStar,
+  IconTrash,
+} from "@tabler/icons";
 
 const Email = ({ email }: { email: EmailItems }) => {
   return (
@@ -35,10 +37,12 @@ const Email = ({ email }: { email: EmailItems }) => {
           <label className="toggle" htmlFor={"mail" + email.id}></label>
         </div>
         <span
-          className={classNames("star-toggle", "uil", "uil uil-star", {
+          className={classNames("star-toggle", {
             "text-warning": email.is_important,
           })}
-        ></span>
+        >
+          <IconStar size={20} />
+        </span>
         <Link to="/apps/email/details" className="title">
           {email.from_name}
           {email.number_of_reply > 1 && <span> ({email.number_of_reply})</span>}
@@ -176,133 +180,64 @@ const Inbox = () => {
           </Card>
 
           <div className="inbox-rightbar">
-            <ButtonGroup className="mb-2 me-1">
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip id="archived">Archived</Tooltip>}
-              >
-                {({ ref, ...triggerHandler }) => (
-                  <Button ref={ref} {...triggerHandler} variant="light">
-                    <i className="uil uil-archive-alt"></i>
-                  </Button>
-                )}
-              </OverlayTrigger>
-              <Button variant="light">
-                <OverlayTrigger
-                  placement="top"
-                  overlay={<Tooltip id="spam">Spam</Tooltip>}
-                >
-                  <i className="uil uil-exclamation-octagon"></i>
-                </OverlayTrigger>
-              </Button>
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip id="delete">Delete</Tooltip>}
-              >
-                <Button variant="light">
-                  <i className="uil uil-trash-alt"></i>
-                </Button>
-              </OverlayTrigger>
-            </ButtonGroup>
+            <div className="inbox-rightbar-header">
+              <Card style={{ backgroundColor: "white", cursor: "pointer" }}>
+                <Tooltip label="Archived">
+                  <div style={{ padding: "0.45rem 0.9rem" }}>
+                    <IconArchive size={18} />
+                  </div>
+                </Tooltip>
 
-            <OverlayTrigger
-              placement="bottom"
-              overlay={<Tooltip id="folder">Folder</Tooltip>}
-            >
-              <Dropdown className="btn-group mb-2 me-1">
-                <Dropdown.Toggle className="btn btn-light">
-                  <i className="uil uil-folder"></i>{" "}
-                  <i className="uil uil-angle-down"></i>
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Header>Move to :</Dropdown.Header>
-                  <Dropdown.Item>Social</Dropdown.Item>
-                  <Dropdown.Item>Promotions</Dropdown.Item>
-                  <Dropdown.Item>Updates</Dropdown.Item>
-                  <Dropdown.Item>Forums</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </OverlayTrigger>
+                <Tooltip label="Spam">
+                  <div style={{ padding: "0.45rem 0.9rem" }}>
+                    <IconAlertOctagon size={18} />
+                  </div>
+                </Tooltip>
 
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip id="labels">Labels</Tooltip>}
-            >
-              <Dropdown className="btn-group mb-2 me-1">
-                <Dropdown.Toggle className="btn btn-light">
-                  <i className="uil uil-label"></i>{" "}
-                  <i className="uil uil-angle-down"></i>
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Header>Label as:</Dropdown.Header>
-                  <Dropdown.Item>Social</Dropdown.Item>
-                  <Dropdown.Item>Promotions</Dropdown.Item>
-                  <Dropdown.Item>Updates</Dropdown.Item>
-                  <Dropdown.Item>Forums</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </OverlayTrigger>
+                <Tooltip label="Delete">
+                  <div style={{ padding: "0.45rem 0.9rem" }}>
+                    <IconTrash size={18} />
+                  </div>
+                </Tooltip>
+              </Card>
 
-            <OverlayTrigger
-              placement="bottom"
-              overlay={<Tooltip id="more actions">More Actions</Tooltip>}
-            >
-              <Dropdown className="btn-group mb-2">
-                <Dropdown.Toggle className="btn btn-light">
-                  <i className="uil uil-ellipsis-h fs-13"></i> More{" "}
-                  <i className="uil uil-angle-down"></i>
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Header>More Options :</Dropdown.Header>
-                  <Dropdown.Item>Mark as Unread</Dropdown.Item>
-                  <Dropdown.Item>Add to Tasks</Dropdown.Item>
-                  <Dropdown.Item>Add Star</Dropdown.Item>
-                  <Dropdown.Item>Mute</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </OverlayTrigger>
-
-            <div className="d-inline-block align-middle float-lg-end">
-              <Row>
-                <Col xs={8} className="align-self-center">
+              <Card>
+                <p>
                   Showing {startIndex} - {endIndex} of {totalEmails}
-                </Col>
-                <Col xs={4}>
-                  <ButtonGroup className="float-end">
-                    {startIndex === 1 ? (
-                      <Button variant="white" className="btn-sm" disabled>
-                        <i className="uil uil-angle-left"></i>
-                      </Button>
-                    ) : (
-                      <Button className="btn-sm" onClick={getPrevPage}>
-                        <i className="uil uil-angle-left"></i>
-                      </Button>
-                    )}
-                    {endIndex !== totalEmails ? (
-                      <Button className="btn-sm" onClick={getNextPage}>
-                        <i className="uil uil-angle-right"></i>
-                      </Button>
-                    ) : (
-                      <Button variant="white" className="btn-sm" disabled>
-                        <i className="uil uil-angle-right"></i>
-                      </Button>
-                    )}
-                  </ButtonGroup>
-                </Col>
-              </Row>
+                </p>
+                <Group>
+                  {startIndex === 1 ? (
+                    <Button disabled>
+                      <IconChevronLeft size={18} />
+                    </Button>
+                  ) : (
+                    <Button onClick={getPrevPage}>
+                      <IconChevronLeft size={18} />
+                    </Button>
+                  )}
+                  {endIndex !== totalEmails ? (
+                    <Button onClick={getNextPage}>
+                      <IconChevronRight size={18} />
+                    </Button>
+                  ) : (
+                    <Button disabled>
+                      <IconChevronRight size={18} />
+                    </Button>
+                  )}
+                </Group>
+              </Card>
             </div>
 
-            <div className="mt-2">
+            <div>
               {startIndex === 1 && (
                 <>
-                  {" "}
-                  <h5 className="mt-3 mb-2 fs-16">Unread</h5>
+                  <h5 className="mt-4">Unread</h5>
                   <ul className="message-list">
                     {(unreadEmails || []).map((email, idx) => {
                       return <Email email={email} key={idx} />;
                     })}
                   </ul>
-                  <h5 className="mt-4 mb-2 fs-16">Important</h5>
+                  <h5 className="mt-4">Important</h5>
                   <ul className="message-list">
                     {(importantEmails || []).map((email, idx) => {
                       return <Email email={email} key={idx} />;
@@ -310,15 +245,7 @@ const Inbox = () => {
                   </ul>
                 </>
               )}
-              <h5
-                className={classNames(
-                  "mb-2",
-                  "fs-16",
-                  startIndex === 1 ? "mt-4" : "mt-3"
-                )}
-              >
-                Everything Else
-              </h5>
+              <h5 className="mt-4">Everything Else</h5>
               <ul className="message-list">
                 {(emailList || []).map((email, idx) => {
                   return <Email email={email} key={idx} />;
@@ -326,8 +253,6 @@ const Inbox = () => {
               </ul>
             </div>
           </div>
-
-          <div className="clearfix"></div>
         </div>
       </Box>
     </Layout>
