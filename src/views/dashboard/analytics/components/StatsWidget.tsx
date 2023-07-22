@@ -81,9 +81,6 @@ const StatsWidget = (props: StatisticsChartWidgetProps) => {
     },
   };
 
-  // type - defaulted to bar
-  const type = props.type || "bar";
-
   // chart data
   const series = [{ name: props.name || "Data", data: props.data || [] }];
 
@@ -117,7 +114,7 @@ const StatsWidget = (props: StatisticsChartWidgetProps) => {
         <Chart
           options={options}
           series={series}
-          type={type}
+          type="bar"
           height={60}
           width={110}
         />

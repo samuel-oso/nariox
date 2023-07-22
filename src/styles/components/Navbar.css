@@ -139,7 +139,7 @@
   .logo_lg {
     display: block;
     width: 108.5px;
-    height: 24px;
+    /* height: 24px; */
   }
 
   .logo_sm {

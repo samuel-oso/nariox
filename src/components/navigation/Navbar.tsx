@@ -1,6 +1,5 @@
 import logo from "../../assets/images/logo.png";
 import logoWeb from "../../assets/images/logoWeb.png";
-import logoWeb_Dark from "../../assets/images/logoWeb_Dark.png";
 import user from "../../assets/images/user.png";
 import "../../styles/components/Navbar.css";
 import {
@@ -58,11 +57,7 @@ function Navbar() {
             className="navList_logos"
           >
             <img className="logo_sm" src={logo} alt="logo" />
-            <img
-              className="logo_lg"
-              src={`${dark ? logoWeb_Dark : logoWeb}`}
-              alt="logo-web"
-            />
+            <img className="logo_lg" src={logoWeb} alt="logo-web" />
           </Box>
 
           <IconMenu2
