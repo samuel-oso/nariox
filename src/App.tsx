@@ -10,12 +10,18 @@ import Tasks from "./views/apps/tasks/Tasks";
 import Inbox from "./views/apps/email/Inbox";
 import Detail from "./views/apps/email/Detail";
 import Compose from "./views/apps/email/Compose";
+import SignIn from "./views/auth/SignIn";
+import SignUp from "./views/auth/SignUp";
+import ForgotPassword from "./views/auth/ForgotPassword";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Ecommerce />} />
+        <Route path="/" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/dashboard/e-commerce" element={<Ecommerce />} />
         <Route path="/dashboard/analytics" element={<Analytics />} />
         <Route path="/apps/calendar" element={<Calendar />} />
         <Route path="/apps/chat" element={<Chat />} />

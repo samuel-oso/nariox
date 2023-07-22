@@ -1,0 +1,107 @@
+.auth {
+  background-color: #f3f4f7;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+}
+
+.auth_Container {
+  max-width: 1075px;
+  margin: 0 auto;
+  display: flex;
+  height: 590px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  justify-content: center;
+}
+
+.auth_Card {
+  width: 50%;
+  background-color: white;
+  padding: 36px;
+}
+
+.authCard_Header img {
+  width: 120px;
+}
+
+.authCard_Header h4 {
+  margin-top: 24px;
+  color: #343a40;
+}
+
+.authCard_Header p {
+  margin-top: 6px;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.authCard_Form {
+  margin-top: 36px;
+}
+
+.auth_CardImg {
+  width: 50%;
+  position: relative;
+}
+
+.auth_CardImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.authCard_Form .mantine-19vce3i,
+.authCard_Form .mantine-1326t0k {
+  height: 40px !important;
+  color: #343a40;
+}
+
+.authCard_Form .mantine-ittua2 {
+  margin-bottom: 8px;
+}
+
+.authCard_Form .mantine-1mgjozw {
+  font-size: 14px;
+  color: #6c757d;
+  width: fit-content;
+  float: right;
+}
+
+.authCard_Form .mantine-1mgjozw:hover {
+  color: #2173ba;
+}
+
+.authCard_Form .mantine-5pla5b {
+  width: 100%;
+  height: 40px;
+}
+
+.auth_Footer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  color: #6c757d;
+  font-size: 14px;
+  margin-top: 24px;
+}
+
+.auth_Footer .mantine-1mgjozw {
+  font-size: 14px;
+  color: #5369f8;
+  font-weight: 700;
+}
+
+.auth_Footer .mantine-1mgjozw:hover {
+  color: #011281;
+}
