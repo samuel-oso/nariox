@@ -21,9 +21,15 @@ export default function Sidebar() {
   const dark = colorScheme === "dark";
   const theme = useMantineTheme();
 
-  const [opened, setOpened] = useState(false);
-
   const { pathname } = useLocation();
+
+  const [opened, setOpened] = useState(
+    pathname === "/dashboard/ecommerce" || pathname === "/dashboard/analytics"
+  );
+
+  const handleCollapseToggle = () => {
+    setOpened((prevOpened) => !prevOpened);
+  };
 
   const navigate = useNavigate();
 
@@ -47,8 +53,19 @@ export default function Sidebar() {
       }}
       className="menubar_wrapper"
     >
-      <div onClick={() => setOpened((o) => !o)} className="menubar_top">
-        <div className="menubar_topLabel">
+      <div onClick={handleCollapseToggle} className="menubar_top">
+        <div
+          style={{
+            color:
+              pathname === "/dashboard/ecommerce" ||
+              pathname === "/dashboard/analytics"
+                ? theme.colors.primary[5]
+                : dark
+                ? theme.colors.grey900[7]
+                : theme.colors.grey700[4],
+          }}
+          className="menubar_topLabel"
+        >
           <IconHome />
           <p>Dashboards</p>
         </div>
@@ -58,24 +75,29 @@ export default function Sidebar() {
       <Collapse className="test" in={opened}>
         <div className="menuItem_sub">
           <Link
-            to="/"
-            className={`menuItem_subLabel ${
-              pathname === "/" && "submenubar__content__titleActive"
-            }`}
+            to="/dashboard/ecommerce"
+            className="menuItem_subLabel"
             style={{
-              color: dark ? theme.colors.grey900[7] : theme.colors.grey700[4],
+              color:
+                pathname === "/dashboard/ecommerce"
+                  ? theme.colors.primary[5]
+                  : dark
+                  ? theme.colors.grey900[7]
+                  : theme.colors.grey700[4],
             }}
           >
             Ecommerce
           </Link>
           <Link
             to="/dashboard/analytics"
-            className={`menuItem_subLabel ${
-              pathname === "/dashboard/analytics" &&
-              "submenubar__content__titleActive"
-            }`}
+            className="menuItem_subLabel"
             style={{
-              color: dark ? theme.colors.grey900[7] : theme.colors.grey700[4],
+              color:
+                pathname === "/dashboard/analytics"
+                  ? theme.colors.primary[5]
+                  : dark
+                  ? theme.colors.grey900[7]
+                  : theme.colors.grey700[4],
             }}
           >
             Analytics

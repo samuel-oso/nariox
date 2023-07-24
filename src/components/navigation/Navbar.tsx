@@ -22,6 +22,7 @@ import ThemeToggle from "../contexts/ThemeToggle";
 import Drawer from "./Drawer";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth-context";
+import { useFullscreen } from "@mantine/hooks";
 
 function Navbar() {
   const [drawerOpened, setDrawerOpened] = useState(false);
@@ -31,6 +32,8 @@ function Navbar() {
   const theme = useMantineTheme();
 
   const { currentUser } = useContext(AuthContext);
+
+  const { toggle } = useFullscreen();
 
   return (
     <>
@@ -78,7 +81,7 @@ function Navbar() {
             />
           </div>
           <div className="navList_icons">
-            <IconDeviceLaptop />
+            <IconDeviceLaptop onClick={toggle} />
             <IconApps />
             <IconWorld />
           </div>
@@ -93,6 +96,7 @@ function Navbar() {
               <IconChevronDown />
             </div>
           </div>
+
           <ThemeToggle />
         </div>
       </Box>

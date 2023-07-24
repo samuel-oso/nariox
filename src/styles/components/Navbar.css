@@ -111,6 +111,10 @@
     gap: 16px;
   }
 
+  .navList_icons svg {
+    cursor: pointer;
+  }
+
   .navList_search {
     margin-top: 0px;
   }

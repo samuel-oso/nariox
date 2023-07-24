@@ -8,9 +8,16 @@ import {
 import { Link, useLocation } from "react-router-dom";
 
 export default function MenubarItem({ item }: { item: any }) {
-  const [opened, setOpened] = useState(false);
-
   const { pathname } = useLocation();
+
+  const [opened, setOpened] = useState(() => {
+    // Check if any of the children pathnames match the current pathname
+    const anyChildActive = item.children
+      ? item.children.some((child: any) => pathname === child.url)
+      : false;
+
+    return pathname === item.url || anyChildActive;
+  });
 
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
@@ -21,9 +28,21 @@ export default function MenubarItem({ item }: { item: any }) {
       <>
         <div
           className={opened ? "menuItem" : "menuItem"}
-          onClick={() => setOpened((o) => !o)}
+          onClick={() => setOpened((o: any) => !o)}
         >
-          <div className="menuItem_label drawerItem_label">
+          <div
+            className={`menuItem_label drawerItem_label ${
+              pathname === item.url || opened ? "menuActive" : ""
+            }`}
+            style={{
+              color:
+                pathname === item.url || opened
+                  ? theme.colors.primary[5]
+                  : dark
+                  ? theme.colors.grey900[7]
+                  : theme.colors.grey700[4],
+            }}
+          >
             {item.icon}
             <p>{item.label}</p>
           </div>
@@ -40,12 +59,15 @@ export default function MenubarItem({ item }: { item: any }) {
                 to={`${child.url}`}
                 key={index}
                 className={`menuItem_subLabel ${
-                  pathname === child.url && "submenubar__content__titleActive"
+                  pathname === child.url ? "menuActive" : ""
                 }`}
                 style={{
-                  color: dark
-                    ? theme.colors.grey900[7]
-                    : theme.colors.grey700[4],
+                  color:
+                    pathname === child.url
+                      ? theme.colors.primary[5]
+                      : dark
+                      ? theme.colors.grey900[7]
+                      : theme.colors.grey700[4],
                 }}
               >
                 {child.label}
@@ -60,10 +82,15 @@ export default function MenubarItem({ item }: { item: any }) {
       <Link
         to={`${item.url}`}
         className={`menuItem_labelLink ${
-          pathname === item.url && "menuActive"
+          pathname === item.url ? "menuActive" : ""
         }`}
         style={{
-          color: dark ? theme.colors.grey900[7] : theme.colors.grey700[4],
+          color:
+            pathname === item.url
+              ? theme.colors.primary[5]
+              : dark
+              ? theme.colors.grey900[7]
+              : theme.colors.grey700[4],
         }}
       >
         {item.icon}
