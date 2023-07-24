@@ -14,6 +14,7 @@ import { Key } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as Exit } from "../../assets/images/logOut.svg";
 import { SignOutUser } from "../../firebase/firebase";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
   const { colorScheme } = useMantineColorScheme();
@@ -24,12 +25,14 @@ export default function Sidebar() {
 
   const { pathname } = useLocation();
 
+  const navigate = useNavigate();
+
   const handleSignOut = async () => {
     try {
       // Sign out the user using the Firebase SignOutUser function
       await SignOutUser();
-      // After successful sign-out, reload the page to update the authentication status
-      window.location.reload();
+      // After successful sign-out, redirect the user to the root route (/)
+      navigate("/");
     } catch (error: any) {
       console.log("Sign Out Failed", error.message);
     }
