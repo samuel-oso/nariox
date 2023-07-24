@@ -20,7 +20,8 @@ import {
 } from "@tabler/icons";
 import ThemeToggle from "../contexts/ThemeToggle";
 import Drawer from "./Drawer";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../context/auth-context";
 
 function Navbar() {
   const [drawerOpened, setDrawerOpened] = useState(false);
@@ -28,6 +29,8 @@ function Navbar() {
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
   const theme = useMantineTheme();
+
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <>
@@ -86,7 +89,7 @@ function Navbar() {
           <div className="navList_profile">
             <Avatar src={user} radius="xl" />
             <div className="navList_profileName">
-              <p>Samuel Oso</p>
+              <p>{currentUser?.displayName}</p>
               <IconChevronDown />
             </div>
           </div>

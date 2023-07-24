@@ -7,12 +7,14 @@ import {
   Drawer as MantineDrawer,
   Box,
   Collapse,
+  UnstyledButton,
   useMantineColorScheme,
   useMantineTheme,
 } from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
 import { MenuItems } from "../../assets/data/MenuData";
 import DrawerItem from "./DrawerItem";
+import { ReactComponent as Exit } from "../../assets/images/logOut.svg";
 
 type DrawerProps = {
   opened: boolean;
@@ -107,6 +109,11 @@ function Drawer(props: DrawerProps) {
             {MenuItems.map((item: any, index: Key | null | undefined) => (
               <DrawerItem key={index} item={item} />
             ))}
+
+            <UnstyledButton className="signOut">
+              <Exit />
+              <p>Sign Out</p>
+            </UnstyledButton>
           </div>
         </Box>
       </MantineDrawer>

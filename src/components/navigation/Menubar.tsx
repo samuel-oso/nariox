@@ -4,6 +4,7 @@ import { useState } from "react";
 import {
   Box,
   Collapse,
+  UnstyledButton,
   useMantineColorScheme,
   useMantineTheme,
 } from "@mantine/core";
@@ -11,6 +12,8 @@ import MenubarItem from "./MenubarItem";
 import { MenuItems } from "../../assets/data/MenuData";
 import { Key } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { ReactComponent as Exit } from "../../assets/images/logOut.svg";
+import { SignOutUser } from "../../firebase/firebase";
 
 export default function Sidebar() {
   const { colorScheme } = useMantineColorScheme();
@@ -20,6 +23,17 @@ export default function Sidebar() {
   const [opened, setOpened] = useState(false);
 
   const { pathname } = useLocation();
+
+  const handleSignOut = async () => {
+    try {
+      // Sign out the user using the Firebase SignOutUser function
+      await SignOutUser();
+      // After successful sign-out, reload the page to update the authentication status
+      window.location.reload();
+    } catch (error: any) {
+      console.log("Sign Out Failed", error.message);
+    }
+  };
 
   return (
     <Box
@@ -82,6 +96,11 @@ export default function Sidebar() {
         {MenuItems.map((item: any, index: Key | null | undefined) => (
           <MenubarItem key={index} item={item} />
         ))}
+
+        <UnstyledButton className="signOut" onClick={handleSignOut}>
+          <Exit />
+          <p>Sign Out</p>
+        </UnstyledButton>
       </div>
     </Box>
   );

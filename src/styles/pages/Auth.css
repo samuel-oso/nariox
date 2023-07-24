@@ -4,14 +4,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 60px;
+  padding-top: 40px;
 }
 
 .auth_Container {
-  max-width: 1075px;
+  width: 1075px;
   margin: 0 auto;
   display: flex;
-  height: 590px;
+  height: 640px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   justify-content: center;
 }
@@ -76,6 +76,7 @@
   color: #6c757d;
   width: fit-content;
   float: right;
+  margin-top: 4px;
 }
 
 .authCard_Form .mantine-1mgjozw:hover {
@@ -85,6 +86,7 @@
 .authCard_Form .mantine-5pla5b {
   width: 100%;
   height: 40px;
+  margin-top: 40px;
 }
 
 .auth_Footer {
@@ -93,7 +95,7 @@
   gap: 10px;
   color: #6c757d;
   font-size: 14px;
-  margin-top: 24px;
+  margin-top: 12px;
 }
 
 .auth_Footer .mantine-1mgjozw {
@@ -104,4 +106,38 @@
 
 .auth_Footer .mantine-1mgjozw:hover {
   color: #011281;
+}
+
+.signOut {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding: 12px 25px;
+  font-size: 15px;
+  color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 13px;
+}
+
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999; /* Adjust the z-index to make sure it appears above other elements */
+}
+
+.resetPassword {
+  font-size: 14px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resetPassword .mantine-1mgjozw {
+  color: #5369f8;
 }

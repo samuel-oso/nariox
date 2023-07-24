@@ -16,7 +16,6 @@ function Theme() {
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
   const dark = colorScheme === "dark";
-
   useHotkeys([["mod+J", () => toggleColorScheme()]]);
 
   return (
