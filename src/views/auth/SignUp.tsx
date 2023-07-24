@@ -57,7 +57,7 @@ const SignUp = () => {
         // Handle successful sign-up (e.g., redirect to sign-in page or show a success message)
         if (userCredential?.user) {
           console.log("Successfully signed up:", userCredential.user);
-          navigate("/"); // Redirect to the sign-in page after successful sign-up
+          navigate("/dashboard/ecommerce"); // Redirect to the sign-in page after successful sign-up
         } else {
           setError("User sign-up failed");
         }
