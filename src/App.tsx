@@ -1,5 +1,5 @@
 import "./App.css";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./context/auth-context";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Analytics from "./views/dashboard/analytics/page/Analytics";
@@ -21,21 +21,27 @@ function App() {
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [isSigningOut, setIsSigningOut] = useState(false);
 
-  // Check if currentUser exists on initial render
   useEffect(() => {
     if (currentUser) {
-      // Check if the user is trying to access one of the auth routes (SignIn, SignUp, or ForgotPassword)
+      // Check if the user is trying to access an auth route
       const isAuthRoute =
         location.pathname === "/" ||
         location.pathname === "/signup" ||
         location.pathname === "/forgot-password";
-      if (!isAuthRoute) {
+      if (isAuthRoute) {
         // Redirect the user to the ecommerce dashboard if they are logged in and trying to access an auth route
         navigate("/dashboard/ecommerce", { replace: true });
       }
+    } else {
+      // User is signing out, reset the flag and redirect to the root route
+      if (isSigningOut) {
+        setIsSigningOut(false); // Set the flag back to false
+        navigate("/", { replace: true });
+      }
     }
-  }, [currentUser, navigate, location]);
+  }, [currentUser, navigate, location, isSigningOut]);
 
   return (
     <Routes>

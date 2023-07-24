@@ -7,11 +7,16 @@ interface Props {
   children?: ReactNode;
 }
 
-export const AuthContext = createContext({
-  // "User" comes from firebase auth-public.d.ts
-  currentUser: {} as User | null,
-  setCurrentUser: (_user: User) => {},
-  signOut: () => {},
+interface AuthContextType {
+  currentUser: User | null;
+  setCurrentUser: React.Dispatch<React.SetStateAction<User | null>>;
+  signOut: () => Promise<void>;
+}
+
+export const AuthContext = createContext<AuthContextType>({
+  currentUser: null,
+  setCurrentUser: () => {},
+  signOut: async () => {},
 });
 
 export const AuthProvider = ({ children }: Props) => {
@@ -22,6 +27,8 @@ export const AuthProvider = ({ children }: Props) => {
     const unsubscribe = userStateListener((user) => {
       if (user) {
         setCurrentUser(user);
+      } else {
+        setCurrentUser(null);
       }
     });
     return unsubscribe;
@@ -29,13 +36,17 @@ export const AuthProvider = ({ children }: Props) => {
 
   // As soon as setting the current user to null,
   // the user will be redirected to the home page.
-  const signOut = () => {
-    SignOutUser();
-    setCurrentUser(null);
-    navigate("/");
+  const signOut = async () => {
+    try {
+      await SignOutUser();
+      setCurrentUser(null);
+      navigate("/");
+    } catch (error: any) {
+      console.error("Sign Out Failed", error.message);
+    }
   };
 
-  const value = {
+  const value: AuthContextType = {
     currentUser,
     setCurrentUser,
     signOut,
